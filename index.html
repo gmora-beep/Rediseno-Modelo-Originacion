@@ -43,112 +43,29 @@
 </div>
 
 <main id="contenido" class="wrap">
-<noscript>
-<p class="notice">Este tablero necesita JavaScript activado para mostrar la información.</p>
-</noscript>
-<p class="notice" id="error-datos" hidden>No se pudo cargar <code>data.js</code>. Verifica que el archivo esté en la misma carpeta que <code>index.html</code>.</p>
 
-<!-- ============ TABLERO ============ -->
-<section class="panel" id="panel-tablero" role="tabpanel" aria-labelledby="tab-tablero" tabindex="0">
-<div class="hero">
-<div class="hero__text">
-<h2 class="hero__title">Crédito Asociado a la Nómina</h2>
-<p class="hero__objective" id="objetivo-programa"></p>
-<p class="hero__context" id="contexto-programa"></p>
-</div>
-<div class="countdown" id="countdown" aria-live="polite"></div>
-<div class="hero__rail">
-<h3 class="visually-hidden">Ruta de hitos clave</h3>
-<div class="rail" id="rail"></div>
-</div>
-</div>
+  <section class="panel" id="panel-tablero">
+    <div class="hero">
 
-<div class="split">
-<section class="block" aria-labelledby="h-decisiones">
-<h3 id="h-decisiones">Decisiones pendientes de Dirección</h3>
-<ul class="decisions" id="decisiones"></ul>
-</section>
-<section class="block" aria-labelledby="h-alertas">
-<h3 id="h-alertas">Alertas y riesgos</h3>
-<ul class="alerts" id="alertas"></ul>
-</section>
-</div>
+      <div class="hero__text">
+        <h2 class="hero__title">Crédito Asociado a la Nómina</h2>
+        <p class="hero__objective" id="objetivo-programa"></p>
+        <p class="hero__context" id="contexto-programa"></p>
+      </div>
 
-<section class="block" aria-labelledby="h-venc">
-<div class="block__head">
-<h3 id="h-venc">Próximos vencimientos</h3>
-<button type="button" class="link-btn" data-ir="actividades">Ver todas las actividades</button>
-</div>
-<div id="vencimientos-resumen"></div>
-</section>
+      <div class="countdown" id="countdown"></div>
 
-<section class="block" aria-labelledby="h-estructura">
-<h3 id="h-estructura">Cómo está organizado el programa</h3>
-<p class="lead">Tres mesas de trabajo reportan a la Mesa de decisión. Cada una tiene un objetivo propio y entregables que, juntos, permiten operar el CAN el 29 de junio de 2027.</p>
-<div id="estructura"></div>
-</section>
+      <div class="hero__rail">
+        <div class="rail" id="rail"></div>
+      </div>
 
-<div class="split">
-<section class="block" aria-labelledby="h-arranque">
-<h3 id="h-arranque">Avance del arranque</h3>
-<p class="meta" id="arranque-fecha"></p>
-<div id="arranque"></div>
-</section>
-<section class="block" aria-labelledby="h-mercado">
-<h3 id="h-mercado">Oportunidad de negocio</h3>
-<div id="mercado"></div>
-</section>
-</div>
-</section>
+    </div>
+  </section>
 
-<!-- ============ RESUMEN SEMANAL ============ -->
-<section class="panel" id="panel-semanal" role="tabpanel" aria-labelledby="tab-semanal" tabindex="0" hidden>
-<header class="panel__head">
-<h2>Resumen semanal</h2>
-<p>Lo más importante de cada semana, a partir de las minutas y presentaciones de las mesas.</p>
-</header>
-<section class="block block--now" aria-labelledby="h-esta-semana">
-<h3 id="h-esta-semana">Esta semana</h3>
-<p class="meta" id="semana-actual-rango"></p>
-<div class="now-grid" id="semana-actual"></div>
-</section>
-<div class="weeks">
-<nav class="weeks__index" aria-label="Semanas con resumen">
-<ul id="semanas-indice"></ul>
-</nav>
-<article class="weeks__detail" id="semana-detalle" aria-live="polite"></article>
-</div>
-</section>
+</main>
 
-<!-- ============ ACTIVIDADES ============ -->
-<section class="panel" id="panel-actividades" role="tabpanel" aria-labelledby="tab-actividades" tabindex="0" hidden>
-<header class="panel__head">
-<h2>Actividades por mesa</h2>
-<p>Lo que cada mesa ya entregó y próximas actividades.</p>
-</header>
-<div class="filters" role="group" aria-label="Filtrar por mesa" id="filtro-mesas"></div>
-<ul class="counts" id="act-conteos" aria-live="polite"></ul>
-<div class="cols">
-<section aria-labelledby="h-proximas">
-<h3 id="h-proximas">Próximas a vencer</h3>
-<ul class="acts" id="lista-proximas"></ul>
-</section>
-<section aria-labelledby="h-realizadas">
-<h3 id="h-realizadas">Realizadas</h3>
-<ul class="acts" id="lista-realizadas"></ul>
-</section>
-</div>
-<section class="block" aria-labelledby="h-def">
-<h3 id="h-def">Definiciones pendientes</h3>
-<ul class="defs-list" id="definiciones"></ul>
-</section>
-<section class="block" aria-labelledby="h-edt">
-<h3 id="h-edt">Draft Componentes de la construcción del sistema</h3>
-<p class="meta">Draft de la EDT compartido en la sesión Mesa de Habilitadores.</p>
-<ol class="edt" id="edt"></ol>
-</section>
-</section>
-
+<script src="data.js"></script>
+<script src="app.js"></script>
 
 </body>
 </html>
