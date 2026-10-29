@@ -207,7 +207,16 @@
 
 </main>
 
-<script src="data.js"></script>
-<script src="app.js"></script>
+<script>
+
+const URL =
+"https://script.google.com/a/macros/consubanco.com/s/AKfycbxoJiL-cJs7wKA3mP-rD7-pc2KgAo6AlpyC9fj7pX_C8EWzKAvinp-3KT78OS_jwmdeFA/exec";
+async function cargarDatos() {
+    const response = await fetch(URL);
+    const data = await response.json();
+    console.log(data);
+}
+cargarDatos();
+</script>
 </body>
 </html>
