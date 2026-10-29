@@ -209,14 +209,16 @@
 
 <script>
 
-const URL =
-"https://script.google.com/a/macros/consubanco.com/s/AKfycbxoJiL-cJs7wKA3mP-rD7-pc2KgAo6AlpyC9fj7pX_C8EWzKAvinp-3KT78OS_jwmdeFA/exec";
-async function cargarDatos() {
-    const response = await fetch(URL);
-    const data = await response.json();
+function cargarDashboard(data){
+
     console.log(data);
+
+    window.dashboardData = data;
+
 }
-cargarDatos();
+
 </script>
+
+<script src="https://script.google.com/a/macros/consubanco.com/s/AKfycbxoJiL-cJs7wKA3mP-rD7-pc2KgAo6AlpyC9fj7pX_C8EWzKAvinp-3KT78OS_jwmdeFA/exec?callback=cargarDashboard"></script>
 </body>
 </html>
