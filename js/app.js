@@ -180,3 +180,30 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const tabDecisiones =
+        document.getElementById("tab-actividades");
+    const panelDecisiones =
+        document.getElementById("panel-actividades");
+    const panelTablero =
+        document.getElementById("panel-tablero");
+    if(tabDecisiones){
+        tabDecisiones.addEventListener("click", async () => {
+            panelTablero.hidden = true;
+            panelDecisiones.hidden = false;
+            if(
+                !document
+                    .getElementById("contenido-decisiones")
+                    .innerHTML
+            ){
+                await cargarVista(
+                    "views/decisiones.html"
+                );
+                actualizarDecisiones(
+                    window.dashboardData
+                );
+            }
+        });
+    }
+});
