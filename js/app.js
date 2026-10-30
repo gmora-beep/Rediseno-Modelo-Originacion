@@ -164,8 +164,6 @@ async function cargarVista(ruta){
 }
 
 let decisionesCargadas = false;
-let decisionesCargadas = false;
-
 document.addEventListener("DOMContentLoaded", () => {
     const tabTablero =
         document.getElementById("tab-tablero");
@@ -175,41 +173,37 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("panel-tablero");
     const panelDecisiones =
         document.getElementById("panel-actividades");
-    if(tabDecisiones){
-        tabDecisiones.addEventListener("click", async () => {
-            panelTablero.hidden = true;
-            panelDecisiones.hidden = false;
-            tabTablero.setAttribute(
-                "aria-selected",
-                "false"
+    tabDecisiones.addEventListener("click", async () => {
+        panelTablero.hidden = true;
+        panelDecisiones.hidden = false;
+        tabTablero.setAttribute(
+            "aria-selected",
+            "false"
+        );
+        tabDecisiones.setAttribute(
+            "aria-selected",
+            "true"
+        );
+        if(!decisionesCargadas){
+            await cargarVista(
+                "views/decisiones.html"
             );
-            tabDecisiones.setAttribute(
-                "aria-selected",
-                "true"
+            actualizarDecisiones(
+                window.dashboardData
             );
-            if(!decisionesCargadas){
-                await cargarVista(
-                    "views/decisiones.html"
-                );
-                actualizarDecisiones(
-                    window.dashboardData
-                );
-                decisionesCargadas = true;
-            }
-        });
-    }
-    if(tabTablero){
-        tabTablero.addEventListener("click", () => {
-            panelTablero.hidden = false;
-            panelDecisiones.hidden = true;
-            tabTablero.setAttribute(
-                "aria-selected",
-                "true"
-            );
-            tabDecisiones.setAttribute(
-                "aria-selected",
-                "false"
-            );
-        });
-    }
+            decisionesCargadas = true;
+        }
+    });
+    tabTablero.addEventListener("click", () => {
+        panelTablero.hidden = false;
+        panelDecisiones.hidden = true;
+        tabTablero.setAttribute(
+            "aria-selected",
+            "true"
+        );
+        tabDecisiones.setAttribute(
+            "aria-selected",
+            "false"
+        );
+    });
 });
