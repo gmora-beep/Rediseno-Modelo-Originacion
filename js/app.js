@@ -1,10 +1,11 @@
-function cargarDashboard(data){
+async function cargarDashboard(data){
     window.dashboardData = data;
     actualizarHero(data);
-    actualizarDecisiones(data);
     actualizarMesas(data);
-    cargarVista("views/decisiones.html");
+    await cargarVista("views/decisiones.html");
+    actualizarDecisiones(data);
 }
+
 function actualizarHero(data){
     const onePage = data["One page"];
     if(!onePage || onePage.length < 4){
