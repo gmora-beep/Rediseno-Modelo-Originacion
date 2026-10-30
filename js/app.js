@@ -245,14 +245,16 @@ function actualizarResumenDecisiones(data){
                 .trim()
                 .toLowerCase();
         let clasePrioridad =
-            "prioridad-baja";
+            "level--bajo";
+        
         if(prioridad === "alta"){
             clasePrioridad =
-                "prioridad-alta";
+                "level--alto";
         }
+        
         if(prioridad === "media"){
             clasePrioridad =
-                "prioridad-media";
+                "level--medio";
         }
         contenedor.innerHTML += `
             <li>
