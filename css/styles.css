@@ -1261,21 +1261,21 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* Scroll elegante */
-#decisiones-dashboard::-webkit-scrollbar
+#decisiones-dashboard::-webkit-scrollbar{
     width: 8px;
 }
 
-#decisiones-dashboard::-webkit-scrollbar-track
+#decisiones-dashboard::-webkit-scrollbar-track{
     background: #eef3fa;
     border-radius: 999px;
 }
 
-#decisiones-dashboard::-webkit-scrollbar-thumb
+#decisiones-dashboard::-webkit-scrollbar-thumb{
     background: #b8c9df;
     border-radius: 999px;
 }
 
-#decisiones-dashboard::-webkit-scrollbar-thumb:hover
+#decisiones-dashboard::-webkit-scrollbar-thumb:hover{
     background: #98afce;
 }
 .level{
