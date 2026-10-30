@@ -938,26 +938,28 @@ a { color: inherit; text-decoration: none; }
 }
 .hero{
     display:grid;
-    grid-template-columns:60% 40%;
-    gap:0;
+    grid-template-columns:1fr 1fr;
     align-items:center;
+    gap:0;
 }
 
 .hero__text{
-    padding-right:20px;
+    padding-right:50px;
 }
 
 .hero-kpis{
+    border-left:1px solid #c9d7ea;
+
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:12px;
+
     align-items:center;
     text-align:center;
 
-    border-left:1px solid #c9d7ea;
+    padding-left:30px;
+    margin:0;
 
-    padding-left:24px;
-    margin-left:24px;
+    min-height:120px;
 }
 
 .hero__objective{
@@ -1031,6 +1033,7 @@ a { color: inherit; text-decoration: none; }
     display:flex;
     flex-direction:column;
     align-items:center;
+    justify-content:center;
 }
 
 .hero-kpi strong{
