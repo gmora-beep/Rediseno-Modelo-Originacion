@@ -1282,3 +1282,50 @@ a { color: inherit; text-decoration: none; }
 #decisiones-dashboard::-webkit-scrollbar-thumb:hover
     background: #98afce;
 }
+.level{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+
+    padding:4px 12px;
+
+    border-radius:999px;
+
+    font-size:12px;
+    font-weight:600;
+}
+
+.level::before{
+    content:"";
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    display:block;
+}
+
+.level--alto{
+    background:#fce6dc;
+    color:#c6581a;
+}
+
+.level--alto::before{
+    background:#e75301;
+}
+
+.level--medio{
+    background:#ece9f7;
+    color:#494d7d;
+}
+
+.level--medio::before{
+    background:#494d7d;
+}
+
+.level--bajo{
+    background:#e5edf9;
+    color:#1b355d;
+}
+
+.level--bajo::before{
+    background:#1b355d;
+}
