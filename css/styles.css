@@ -1234,3 +1234,27 @@ a { color: inherit; text-decoration: none; }
     color:#66758d;
     margin-top:4px;
 }
+.decision__head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+}
+
+.decision__title{
+    margin:0;
+    font-weight:700;
+    color:#1b355d;
+}
+
+.level{
+    padding:6px 12px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:700;
+}
+
+.level--alto{
+    background:#f4d5c8;
+    color:#a34a25;
+}
