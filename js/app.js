@@ -1,5 +1,6 @@
 function cargarDashboard(data){
     console.log(data);
+    console.log(Object.keys(data));
     window.dashboardData = data;
     actualizarHero(data);
 }
