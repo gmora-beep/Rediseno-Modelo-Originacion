@@ -308,49 +308,76 @@
 </main>
 
 <script>
+
 function cargarDashboard(data){
+
     window.dashboardData = data;
+
     const contenedor =
         document.getElementById("mesas-container");
+
     if(!contenedor) return;
-    const hojas =
-        data["One page"];
-    if(!hojas) return;
+
     contenedor.innerHTML = "";
-    hojas.slice(1).forEach(fila => {
+
+    const hoja = data["One page"];
+
+    if(!hoja || hoja.length < 2){
+        contenedor.innerHTML =
+            "<p>No hay información disponible en la pestaña One page.</p>";
+        return;
+    }
+
+    for(let i = 1; i < hoja.length; i++){
+
+        const fila = hoja[i];
+
         contenedor.innerHTML += `
-        <div class="mesa-card">
-            <div class="mesa-header">
-                <h3>${fila[1] || ""}</h3>
-            </div>
-            <div class="mesa-body">
-                <div class="mesa-meta">
-                    <div>
-                        <strong>Dirección</strong>
-                        <p>${fila[0] || ""}</p>
-                    </div>
-                    <div>
-                        <strong>Responsable</strong>
-                        <p>${fila[2] || ""}</p>
-                    </div>
-                    <div>
-                        <strong>Sesiones realizadas</strong>
-                        <p>${fila[3] || ""}</p>
-                    </div>
-                    <div>
-                        <strong>Periodo</strong>
-                        <p>${fila[5] || ""}</p>
-                    </div>
+            <div class="mesa-card">
+
+                <div class="mesa-header">
+                    <h3>${fila[1] || "Mesa"}</h3>
                 </div>
-                <div class="mesa-objetivo">
-                    <strong>Objetivo</strong>
-                    <p>${fila[4] || ""}</p>
+
+                <div class="mesa-body">
+
+                    <div class="mesa-meta">
+
+                        <div>
+                            <strong>Dirección</strong>
+                            <p>${fila[0] || ""}</p>
+                        </div>
+
+                        <div>
+                            <strong>Responsable</strong>
+                            <p>${fila[2] || ""}</p>
+                        </div>
+
+                        <div>
+                            <strong>Sesiones realizadas</strong>
+                            <p>${fila[3] || ""}</p>
+                        </div>
+
+                        <div>
+                            <strong>Periodo</strong>
+                            <p>${fila[5] || ""}</p>
+                        </div>
+
+                    </div>
+
+                    <div class="mesa-objetivo">
+                        <strong>Objetivo</strong>
+                        <p>${fila[4] || ""}</p>
+                    </div>
+
                 </div>
+
             </div>
-        </div>
         `;
-    });
+    }
+
 }
+
 </script>
 
 <script src="https://script.google.com/a/macros/consubanco.com/s/AKfycbxoJiL-cJs7wKA3mP-rD7-pc2KgAo6AlpyC9fj7pX_C8EWzKAvinp-3KT78OS_jwmdeFA/exec?callback=cargarDashboard"></script>
