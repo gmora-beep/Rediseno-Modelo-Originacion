@@ -318,61 +318,60 @@ function cargarDashboard(data){
 
     if(!contenedor) return;
 
+    const hoja =
+        data["One page"];
+
+    if(!hoja || hoja.length < 2) return;
+
     contenedor.innerHTML = "";
-
-    const hoja = data["One page"];
-
-    if(!hoja || hoja.length < 2){
-        contenedor.innerHTML =
-            "<p>No hay información disponible en la pestaña One page.</p>";
-        return;
-    }
 
     for(let i = 1; i < hoja.length; i++){
 
         const fila = hoja[i];
 
         contenedor.innerHTML += `
-            <div class="mesa-card">
 
-                <div class="mesa-header">
-                    <h3>${fila[1] || "Mesa"}</h3>
+        <div class="mesa-card">
+
+            <div class="mesa-header">
+
+                <h3>${fila[0]}</h3>
+
+            </div>
+
+            <div class="mesa-body">
+
+                <div class="mesa-meta">
+
+                    <div>
+                        <strong>Responsable</strong>
+                        <p>${fila[1]}</p>
+                    </div>
+
+                    <div>
+                        <strong>Sesiones realizadas</strong>
+                        <p>${fila[2]}</p>
+                    </div>
+
+                    <div>
+                        <strong>Periodo</strong>
+                        <p>${fila[4]}</p>
+                    </div>
+
                 </div>
 
-                <div class="mesa-body">
+                <div class="mesa-objetivo">
 
-                    <div class="mesa-meta">
+                    <strong>Objetivo</strong>
 
-                        <div>
-                            <strong>Dirección</strong>
-                            <p>${fila[0] || ""}</p>
-                        </div>
-
-                        <div>
-                            <strong>Responsable</strong>
-                            <p>${fila[2] || ""}</p>
-                        </div>
-
-                        <div>
-                            <strong>Sesiones realizadas</strong>
-                            <p>${fila[3] || ""}</p>
-                        </div>
-
-                        <div>
-                            <strong>Periodo</strong>
-                            <p>${fila[5] || ""}</p>
-                        </div>
-
-                    </div>
-
-                    <div class="mesa-objetivo">
-                        <strong>Objetivo</strong>
-                        <p>${fila[4] || ""}</p>
-                    </div>
+                    <p>${fila[3]}</p>
 
                 </div>
 
             </div>
+
+        </div>
+
         `;
     }
 
