@@ -28,47 +28,110 @@ function actualizarHero(data){
 }
 
 function actualizarDecisiones(data){
-    const definiciones =
+    const hoja =
         data["Definiciones pendientes"];
-    const contenedor =
-        document.getElementById("decisiones");
-    if(!definiciones || !contenedor){
+    if(!hoja){
         return;
     }
-    contenedor.innerHTML = "";
-    definiciones.slice(1).forEach(fila => {
-        const texto = fila[1];     // Columna B
-        const prioridad = fila[6]; // Columna G
-        const estatus = fila[5];   // Columna F
-        if(
-            String(estatus)
-            .trim()
-            .toLowerCase() === "cerrado"
-        ){
-            return;
-        }
-        let clase = "level--medio";
-        if(
-            String(prioridad)
-            .toLowerCase()
-            .includes("alta")
-        ){
-            clase = "level--alto";
-        }
-        contenedor.innerHTML += `
-            <li>
-                <div class="decision__head">
-                    <p class="decision__title">
-                        ${texto}
-                    </p>
-                    <span class="level ${clase}">
-                        ${prioridad}
+    const pendientes =
+        document.getElementById("lista-pendientes");
+    const realizadas =
+        document.getElementById("lista-realizadas");
+    const totalPendientes =
+        document.getElementById("dec-pendientes");
+    const totalRealizadas =
+        document.getElementById("dec-realizadas");
+    if(
+        !pendientes ||
+        !realizadas
+    ){
+        return;
+    }
+    pendientes.innerHTML = "";
+    realizadas.innerHTML = "";
+    let contadorPendientes = 0;
+    let contadorRealizadas = 0;
+    hoja.slice(1).forEach(fila => {
+        const texto = fila[1];
+        const responsable = fila[2];
+        const mesa = fila[3];
+        const fecha = fila[4];
+        const estatus = fila[5];
+        const prioridad = fila[6];
+        const tarjeta = `
+            <li class="act">
+                <div class="act__date">
+                    <span class="act__day">
+                        ${obtenerDia(fecha)}
+                    </span>
+                    <span class="act__mon">
+                        ${obtenerMes(fecha)}
+                    </span>
+                    <span class="act__year">
+                        ${obtenerAnio(fecha)}
                     </span>
                 </div>
+                <div>
+                    <p class="act__title">
+                        ${texto}
+                    </p>
+                    <p class="act__meta">
+                        ${mesa}
+                        •
+                        ${responsable}
+                    </p>
+                    <p class="act__src">
+                        Estatus:
+                        ${estatus}
+                    </p>
+                </div>
+                <span class="status">
+                    ${prioridad}
+                </span>
             </li>
         `;
+        if(
+            String(estatus)
+                .trim()
+                .toLowerCase() === "cerrado"
+        ){
+            realizadas.innerHTML += tarjeta;
+            contadorRealizadas++;
+        }else{
+            pendientes.innerHTML += tarjeta;
+            contadorPendientes++;
+        }
     });
+    if(totalPendientes){
+        totalPendientes.textContent =
+            contadorPendientes;
+    }
+    if(totalRealizadas){
+        totalRealizadas.textContent =
+            contadorRealizadas;
+    }
 }
+function obtenerDia(fecha){
+    const f = new Date(fecha);
+    if(isNaN(f)) return "--";
+    return f.getDate();
+}
+function obtenerMes(fecha){
+    const f = new Date(fecha);
+    if(isNaN(f)) return "---";
+    return [
+        "ene","feb","mar",
+        "abr","may","jun",
+        "jul","ago","sep",
+        "oct","nov","dic"
+    ][f.getMonth()];
+}
+function obtenerAnio(fecha){
+    const f = new Date(fecha);
+    if(isNaN(f)) return "----";
+    return f.getFullYear();
+}
+
 function actualizarMesas(data){
     const onePage = data["One page"];
     if(!onePage || onePage.length < 4){
