@@ -44,7 +44,8 @@
 <p class="notice">Este tablero necesita JavaScript activado para mostrar la información.</p>
 </noscript>
 <p class="notice" id="error-datos" hidden>No se pudo cargar <code>data.js</code>. Verifica que el archivo esté en la misma carpeta que <code>index.html</code>.</p>
-
+<div id="contenido-vista"></div>
+    
 <!-- ============ TABLERO ============ -->
 <section class="panel" id="panel-tablero" role="tabpanel" aria-labelledby="tab-tablero" tabindex="0">
 <div class="hero">
@@ -381,115 +382,6 @@
 <div id="vencimientos-resumen"></div>
 </section>
 <section class="block" aria-labelledby="h-estructura">
-</section>
-
-<!-- ============ RESUMEN SEMANAL ============ -->
-<section class="panel" id="panel-semanal" role="tabpanel" aria-labelledby="tab-semanal" tabindex="0" hidden>
-<header class="panel__head">
-<h2>Resumen semanal</h2>
-<p>Lo más importante de cada semana, a partir de las minutas y presentaciones de las mesas.</p>
-</header>
-<section class="block block--now" aria-labelledby="h-esta-semana">
-<h3 id="h-esta-semana">Esta semana</h3>
-<p class="meta" id="semana-actual-rango"></p>
-<div class="now-grid" id="semana-actual"></div>
-</section>
-<div class="weeks">
-<nav class="weeks__index" aria-label="Semanas con resumen">
-<ul id="semanas-indice"></ul>
-</nav>
-<article class="weeks__detail" id="semana-detalle" aria-live="polite"></article>
-</div>
-</section>
-
-<!-- ============ ACTIVIDADES ============ -->
-<section class="panel" id="panel-actividades" role="tabpanel" aria-labelledby="tab-actividades" tabindex="0" hidden>
-<header class="panel__head">
-<h2>Decisiones por mesa</h2>
-<p>
-Definiciones, acuerdos y decisiones identificadas durante las sesiones de trabajo.
-</p>
-</header>
-<div class="filters" role="group" aria-label="Filtrar por mesa" id="filtro-mesas"></div>
-<ul class="counts" id="act-conteos" aria-live="polite"></ul>
-<div class="cols">
-<section aria-labelledby="h-proximas">
-<h3 id="h-proximas">Decisiones pendientes</h3>
-<ul class="acts" id="lista-pendientes"></ul>
-</section>
-<h3 id="h-realizadas">Decisiones realizadas</h3>
-<ul class="acts" id="lista-realizadas"></ul>
-<ul class="acts" id="lista-realizadas"></ul>
-</section>
-</div>
-<section class="block" aria-labelledby="h-def">
-<h3 id="h-def">Definiciones pendientes</h3>
-<ul class="defs-list" id="definiciones"></ul>
-</section>
-<section class="block" aria-labelledby="h-edt">
-<h3 id="h-edt">Draft Componentes de la construcción del sistema</h3>
-<p class="meta">Draft de la EDT compartido en la sesión Mesa de Habilitadores.</p>
-<ol class="edt" id="edt"></ol>
-</section>
-</section>
-
-<!-- ============ TIMELINE DEL PROYECTO ============ -->
-<section class="panel" id="panel-timeline" role="tabpanel" aria-labelledby="tab-timeline" tabindex="0" hidden>
-<header class="panel__head">
-<h2>Timeline del proyecto</h2>
-<p id="tl-nota"></p>
-</header>
-<ul class="legend" id="tl-leyenda" aria-label="Leyenda"></ul>
-<div id="gantt-proyecto"></div>
-<section class="block" aria-labelledby="h-hitos">
-<h3 id="h-hitos">Hitos del programa</h3>
-<ol class="milestones" id="hitos-lista"></ol>
-</section>
-</section>
-
-<!-- ============ TIMELINE CECOBAN ============ -->
-<section class="panel" id="panel-cecoban" role="tabpanel" aria-labelledby="tab-cecoban" tabindex="0" hidden>
-<header class="panel__head">
-<h2>Timeline CECOBAN</h2>
-<p>Roadmap de CECOBAN para la banca.</p>
-</header>
-<ul class="legend" id="cecoban-leyenda" aria-label="Leyenda"></ul>
-<div id="gantt-cecoban"></div>
-<section class="block" aria-labelledby="h-cecoban-tabla">
-<h3 id="h-cecoban-tabla">Detalle del roadmap</h3>
-<div class="table-wrap" tabindex="0" role="region" aria-labelledby="h-cecoban-tabla">
-<table id="tabla-cecoban"></table>
-</div>
-</section>
-<section class="block" aria-labelledby="h-flujo">
-<h3 id="h-flujo">Flujo operativo con CECOBAN</h3>
-<p class="meta">CECOBAN es el eje central entre el banco que otorga el crédito y el banco donde el cliente recibe su nómina.</p>
-<div id="flujo-cecoban"></div>
-</section>
-</section>
-
-<!-- ============ REGULATORIO ============ -->
-<section class="panel" id="panel-regulatorio" role="tabpanel" aria-labelledby="tab-regulatorio" tabindex="0" hidden>
-<header class="panel__head">
-<h2>Regulatorio y auditoría</h2>
-<p>Lo que exige la Circular 6/2025 y lo que Auditoría Interna debe probar para emitir el dictamen antes del 29 de junio de 2027.</p>
-</header>
-<section class="block" aria-labelledby="h-aud-obj">
-<div class="block__head">
-<h3 id="h-aud-obj">Qué revisará la auditoría</h3>
-<button type="button" class="link-btn" data-ir="timeline">Ver cronograma de auditoría</button>
-</div>
-<ul class="checklist" id="aud-objetivos"></ul>
-</section>
-<section class="block" aria-labelledby="h-matriz">
-<h3 id="h-matriz">Matriz maestra de auditoría</h3>
-<p class="meta">Versión del 24 de agosto de 2026. Responsable y necesidad de TI por punto aún sin asignar.</p>
-<div class="filters" role="group" aria-label="Filtrar por nivel de riesgo" id="filtro-riesgo"></div>
-<div class="table-wrap" tabindex="0" role="region" aria-labelledby="h-matriz">
-<table id="tabla-matriz"></table>
-</div>
-<dl class="risk-defs" id="riesgo-defs"></dl>
-</section>
 </section>
 
 </main>
