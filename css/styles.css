@@ -808,30 +808,35 @@ a { color: inherit; text-decoration: none; }
     padding:12px 16px;
     display:grid;
     grid-template-columns:1fr 1fr auto;
-    gap:10px;
-    align-items:end;
+    gap:14px;
+    align-items:center;
 }
 
 .mesa-col label{
     display:block;
-    font-size:11px;
-    color:#60708d;
+    font-size:12px;
+    font-weight:600;
+    color:#63728b;
+    margin-bottom:4px;
 }
 
 .mesa-col strong{
     display:block;
-    font-size:28px;
-    margin-top:3px;
+    font-size:18px;
+    margin-top:2px;
+    line-height:1.2;
 }
 
 .mesa-fecha{
-    font-size:13px;
+    font-size:14px;
+    font-weight:700;
     color:#45556f;
+    white-space:nowrap;
 }
 
 .mesa-objetivo{
-    padding:0 16px 14px;
-    min-height:85px;
+    padding:0 16px 10px;
+    min-height:60px;
 }
 
 .mesa-objetivo strong{
@@ -880,4 +885,21 @@ a { color: inherit; text-decoration: none; }
 
 .rojo{
     color:#d92f2f;
+}
+.mesa-progress{
+    display:flex;
+    height:8px;
+    background:#e9eef7;
+}
+
+.bar-registradas{
+    background:#345a9c;
+}
+
+.bar-cerradas{
+    background:#00a37a;
+}
+
+.bar-abiertas{
+    background:#e64545;
 }
