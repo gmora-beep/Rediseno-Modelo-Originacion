@@ -162,3 +162,21 @@ async function cargarVista(ruta){
     const html = await response.text();
     document.getElementById("contenido-decisiones").innerHTML = html;
 }
+
+let decisionesCargadas = false;
+document.addEventListener("DOMContentLoaded", () => {
+    const btnDecisiones =
+        document.getElementById("tab-actividades");
+    if(!btnDecisiones) return;
+    btnDecisiones.addEventListener("click", async () => {
+        if(!decisionesCargadas){
+            await cargarVista(
+                "views/decisiones.html"
+            );
+            actualizarDecisiones(
+                window.dashboardData
+            );
+            decisionesCargadas = true;
+        }
+    });
+});
