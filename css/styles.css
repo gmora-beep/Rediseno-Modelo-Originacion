@@ -898,15 +898,15 @@ a { color: inherit; text-decoration: none; }
 }
 
 .bar-registradas{
-    background:#345a9c;
+    background:#1b355d;
 }
 
 .bar-cerradas{
-    background:#00a37a;
+    background:#494d7d;
 }
 
 .bar-abiertas{
-    background:#e64545;
+    background:#e75301;
 }
 .mesa-sesiones{
     text-align:center;
