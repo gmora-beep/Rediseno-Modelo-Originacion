@@ -6,6 +6,7 @@ function cargarDashboard(data){
 function actualizarHero(data){
 
     const onePage = data["One page"];
+    console.log(onePage);
 
     if(!onePage || onePage.length < 4){
         return;
