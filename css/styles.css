@@ -1053,3 +1053,24 @@ a { color: inherit; text-decoration: none; }
     text-align:center;
     font-size:14px;
 }
+.onepage-layout{
+    display:grid;
+    grid-template-columns:2.3fr .9fr;
+    gap:16px;
+    align-items:start;
+}
+
+.onepage-layout .onepage{
+    margin:0;
+}
+
+.onepage-sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.onepage-sidebar .status-card,
+.onepage-sidebar .priority-card{
+    margin:0;
+}
