@@ -160,6 +160,5 @@ function actualizarMesas(data){
 async function cargarVista(ruta){
     const response = await fetch(ruta);
     const html = await response.text();
-    document.getElementById("contenido-vista").innerHTML =
-        html;
+    document.getElementById("contenido-decisiones").innerHTML = html;
 }
