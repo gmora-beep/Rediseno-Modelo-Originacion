@@ -938,7 +938,7 @@ a { color: inherit; text-decoration: none; }
 }
 .hero{
     display:grid;
-    grid-template-columns:2fr 1.2fr;
+    grid-template-columns:1.7fr 1fr;
     gap:30px;
     align-items:center;
 }
@@ -946,9 +946,12 @@ a { color: inherit; text-decoration: none; }
 .hero-kpis{
     display:grid;
     grid-template-columns:repeat(4,1fr);
+    gap:12px;
     align-items:center;
     text-align:center;
-    gap:12px;
+
+    border-left:1px solid #c9d7ea;
+    padding-left:32px;
 }
 
 .hero__objective{
@@ -960,7 +963,7 @@ a { color: inherit; text-decoration: none; }
 
 .hero-periodo span{
     display:block;
-    font-size:18px;
+    font-size:22px;
     font-weight:700;
     line-height:1.1;
     color:#1b355d;
@@ -971,14 +974,6 @@ a { color: inherit; text-decoration: none; }
     font-size:13px;
     line-height:1.1;
     margin-bottom:2px;
-}
-
-.hero-periodo span{
-    display:block;
-    font-size:14px;
-    font-weight:700;
-    line-height:1.1;
-    color:#1b355d;
 }
 
 .hero-kpis{
@@ -1004,7 +999,7 @@ a { color: inherit; text-decoration: none; }
     margin-top:6px;
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:8px;
 }
 
 .hero-icon{
@@ -1014,8 +1009,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero-icon svg{
-    width:42px;
-    height:42px;
+    width:46px;
+    height:46px;
 }
 
 .hero-kpi-icon{
