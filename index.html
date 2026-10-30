@@ -44,7 +44,15 @@
 <p class="notice">Este tablero necesita JavaScript activado para mostrar la información.</p>
 </noscript>
 <p class="notice" id="error-datos" hidden>No se pudo cargar <code>data.js</code>. Verifica que el archivo esté en la misma carpeta que <code>index.html</code>.</p>
-<div id="contenido-vista"></div>
+<section
+    class="panel"
+    id="panel-actividades"
+    role="tabpanel"
+    aria-labelledby="tab-actividades"
+    tabindex="0"
+    hidden>
+    <div id="contenido-decisiones"></div>
+</section>
     
 <!-- ============ TABLERO ============ -->
 <section class="panel" id="panel-tablero" role="tabpanel" aria-labelledby="tab-tablero" tabindex="0">
