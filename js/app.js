@@ -2,6 +2,7 @@ async function cargarDashboard(data){
     window.dashboardData = data;
     actualizarHero(data);
     actualizarMesas(data);
+    actualizarResumenDecisiones(data);
     await cargarVista("views/decisiones.html");
     actualizarDecisiones(data);
 }
@@ -207,3 +208,50 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     });
 });
+
+function actualizarResumenDecisiones(data){
+    const hoja =
+        data["Definiciones pendientes"];
+    const contenedor =
+        document.getElementById(
+            "decisiones-dashboard"
+        );
+    if(!hoja || !contenedor){
+        return;
+    }
+    contenedor.innerHTML = "";
+    const pendientes = hoja
+        .slice(1)
+        .filter(fila =>
+            String(fila[5])
+                .trim()
+                .toLowerCase() !== "cerrado"
+        )
+        .sort((a,b) => {
+            const orden = {
+                "alta": 1,
+                "media": 2,
+                "baja": 3
+            };
+            return (
+                (orden[String(a[6]).toLowerCase()] || 99)
+                -
+                (orden[String(b[6]).toLowerCase()] || 99)
+            );
+        })
+        .slice(0,10);
+    pendientes.forEach(fila => {
+        contenedor.innerHTML += `
+            <li>
+                <div class="decision__head">
+                    <p class="decision__title">
+                        ${fila[1]}
+                    </p>
+                    <span class="level">
+                        ${fila[6]}
+                    </span>
+                </div>
+            </li>
+        `;
+    });
+}
