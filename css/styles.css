@@ -173,9 +173,14 @@ text-decoration: underline; text-underline-offset: 3px;
 
 /* ---------- Hero ---------- */
 .hero {
-display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem 2.5rem;
-background: #DCEAF9; border-radius: var(--r-l);
-padding: clamp(1.25rem, 3vw, 2.25rem) clamp(1.25rem, 3vw, 2.5rem) 1.25rem;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:0;
+
+    padding:12px 24px;
+
+    min-height:110px;
 }
 .hero__title { font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.35rem); margin-bottom: .6rem; }
 .hero__objective {
@@ -686,7 +691,6 @@ border-top: 4px solid var(--sky); border-radius: var(--r-s); padding: .75rem .8r
 }
 @media (max-width: 720px) {
 .masthead__meta p { text-align: left; }
-.hero { grid-template-columns: 1fr; }
 .countdown { align-items: flex-start; text-align: left; order: -1; flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: .25rem .6rem; }
 .countdown__txt { max-width: none; margin-top: 0; }
 .countdown__date { flex-basis: 100%; margin-top: 0; }
@@ -959,7 +963,8 @@ a { color: inherit; text-decoration: none; }
     padding-left:30px;
     margin:0;
 
-    min-height:120px;
+    min-height:90px;
+    margin-bottom:4px;
 }
 
 .hero__objective{
@@ -999,7 +1004,7 @@ a { color: inherit; text-decoration: none; }
     font-size:14px;
 }
 .hero-periodo{
-    margin-top:6px;
+    margin-top:0;
     display:flex;
     align-items:center;
     gap:8px;
