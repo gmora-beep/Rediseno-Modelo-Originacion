@@ -262,7 +262,7 @@ function actualizarResumenDecisiones(data){
                     <p class="decision__title">
                         ${fila[1]}
                     </p>
-                    <span class="prioridad ${clasePrioridad}">
+                    <span class="level ${clasePrioridad}">
                         ${fila[6]}
                     </span>
                 </div>
