@@ -3,6 +3,7 @@ function cargarDashboard(data){
     window.dashboardData = data;
     actualizarHero(data);
     actualizarDecisiones(data);
+    actualizarMesas(data);
 }
 function actualizarHero(data){
 
@@ -76,4 +77,28 @@ function actualizarDecisiones(data){
             </li>
         `;
     });
+}
+function actualizarMesas(data){
+    const onePage = data["One page"];
+    if(!onePage || onePage.length < 4){
+        return;
+    }
+    // Cumplimiento
+    document.getElementById("cumplimiento-sesiones").textContent = onePage[1][2];
+    document.getElementById("cumplimiento-fecha").textContent = onePage[1][4];
+    document.getElementById("cumplimiento-registradas").textContent = onePage[1][5];
+    document.getElementById("cumplimiento-cerradas").textContent = onePage[1][6];
+    document.getElementById("cumplimiento-abiertas").textContent = onePage[1][7];
+    // Comercial
+    document.getElementById("comercial-sesiones").textContent = onePage[2][2];
+    document.getElementById("comercial-fecha").textContent = onePage[2][4];
+    document.getElementById("comercial-registradas").textContent = onePage[2][5];
+    document.getElementById("comercial-cerradas").textContent = onePage[2][6];
+    document.getElementById("comercial-abiertas").textContent = onePage[2][7];
+    // Tecnología
+    document.getElementById("tecnologia-sesiones").textContent = onePage[3][2];
+    document.getElementById("tecnologia-fecha").textContent = onePage[3][4];
+    document.getElementById("tecnologia-registradas").textContent = onePage[3][5];
+    document.getElementById("tecnologia-cerradas").textContent = onePage[3][6];
+    document.getElementById("tecnologia-abiertas").textContent = onePage[3][7];
 }
