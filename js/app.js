@@ -238,16 +238,29 @@ function actualizarResumenDecisiones(data){
                 -
                 (orden[String(b[6]).toLowerCase()] || 99)
             );
-        })
-        .slice(0,10);
+        });
     pendientes.forEach(fila => {
+        const prioridad =
+            String(fila[6] || "")
+                .trim()
+                .toLowerCase();
+        let clasePrioridad =
+            "prioridad-baja";
+        if(prioridad === "alta"){
+            clasePrioridad =
+                "prioridad-alta";
+        }
+        if(prioridad === "media"){
+            clasePrioridad =
+                "prioridad-media";
+        }
         contenedor.innerHTML += `
             <li>
                 <div class="decision__head">
                     <p class="decision__title">
                         ${fila[1]}
                     </p>
-                    <span class="level">
+                    <span class="prioridad ${clasePrioridad}">
                         ${fila[6]}
                     </span>
                 </div>
