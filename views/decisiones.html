@@ -1,1 +1,55 @@
+<section class="panel-view">
+    <header class="panel__head">
+        <h2>Decisiones por mesa</h2>
+        <p>
+            Definiciones, acuerdos y decisiones identificadas durante las sesiones de trabajo.
+        </p>
+    </header>
 
+  <!-- Filtros -->
+    <div class="filters"
+         role="group"
+         aria-label="Filtrar por mesa"
+         id="filtro-mesas">
+        <button class="chip-btn active">
+            Todas
+        </button>
+        <button class="chip-btn">
+            Mesa de Cumplimiento y Riesgo
+        </button>
+        <button class="chip-btn">
+            Mesa de Estrategia Comercial
+        </button>
+        <button class="chip-btn">
+            Mesa de Arquitectura y Tecnología
+        </button>
+    </div>
+
+    <!-- Contadores -->
+    <ul class="counts">
+        <li>
+            <strong id="dec-pendientes">0</strong>
+            pendientes
+        </li>
+        <li>
+            <strong id="dec-realizadas">0</strong>
+            realizadas
+        </li>
+    </ul>
+
+    <!-- Columnas -->
+    <div class="cols">
+        <section>
+            <h3>Decisiones pendientes</h3>
+            <ul class="acts"
+                id="lista-pendientes">
+            </ul>
+        </section>
+        <section>
+            <h3>Decisiones realizadas</h3>
+            <ul class="acts"
+                id="lista-realizadas">
+            </ul>
+        </section>
+    </div>
+</section>
