@@ -983,3 +983,47 @@ a { color: inherit; text-decoration: none; }
     margin-top:8px;
     font-size:14px;
 }
+.hero-periodo{
+    margin-top:20px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.hero-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero-kpi-icon{
+    height:38px;
+    margin-bottom:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero-kpi-icon svg{
+    width:32px;
+    height:32px;
+}
+
+.hero-kpi{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.hero-kpi strong{
+    display:block;
+    font-size:42px;
+    line-height:1;
+    color:#1b355d;
+}
+
+.hero-kpi span{
+    margin-top:6px;
+    text-align:center;
+    font-size:14px;
+}
