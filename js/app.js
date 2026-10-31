@@ -2,6 +2,7 @@ async function cargarDashboard(data){
     window.dashboardData = data;
     actualizarHero(data);
     actualizarMesas(data);
+    actualizarResumenMVP(data);
     actualizarResumenDecisiones(data);
     await cargarVista("views/decisiones.html");
     actualizarDecisiones(data);
@@ -269,4 +270,79 @@ function actualizarResumenDecisiones(data){
             </li>
         `;
     });
+}
+
+function actualizarResumenMVP(data){
+    const onePage =
+        data["One page"];
+    const definiciones =
+        data["Definiciones pendientes"];
+    if(!onePage || !definiciones){
+        return;
+    }
+    let registradas = 0;
+    let cerradas = 0;
+    let abiertas = 0;
+    let alta = 0;
+    let media = 0;
+    let baja = 0;
+    // One Page
+    for(let i = 1; i < onePage.length; i++){
+        registradas += Number(onePage[i][5]) || 0;
+        cerradas += Number(onePage[i][6]) || 0;
+        abiertas += Number(onePage[i][7]) || 0;
+        alta += Number(onePage[i][8]) || 0;
+        media += Number(onePage[i][9]) || 0;
+        baja += Number(onePage[i][10]) || 0;
+    }
+    let pendientes = 0;
+    let revision = 0;
+    let proceso = 0;
+    // Definiciones pendientes
+    definiciones.slice(1).forEach(fila => {
+        const estatus =
+            String(fila[5] || "")
+                .trim()
+                .toLowerCase();
+        if(estatus === "pendiente"){
+            pendientes++;
+        }
+        else if(
+            estatus === "en revisión" ||
+            estatus === "revision"
+        ){
+            revision++;
+        }
+        else if(
+            estatus === "en proceso"
+        ){
+            proceso++;
+        }
+    });
+    document.getElementById("mvp-total")
+        .textContent = registradas;
+    document.getElementById("defs-cerradas")
+        .textContent =
+        `${cerradas} cerradas`;
+    document.getElementById("defs-abiertas")
+        .textContent =
+        `${abiertas} abiertas`;
+    document.getElementById("mvp-pendientes")
+        .textContent =
+        `Pendientes: ${pendientes}`;
+    document.getElementById("mvp-revision")
+        .textContent =
+        `En revisión: ${revision}`;
+    document.getElementById("mvp-proceso")
+        .textContent =
+        `En proceso: ${proceso}`;
+    document.getElementById("mvp-abiertas-prioridad")
+        .textContent =
+        abiertas;
+    document.getElementById("mvp-alta")
+        .textContent = alta;
+    document.getElementById("mvp-media")
+        .textContent = media;
+    document.getElementById("mvp-baja")
+        .textContent = baja;
 }
