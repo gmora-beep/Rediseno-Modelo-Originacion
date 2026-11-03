@@ -162,7 +162,12 @@ margin-top: 1.25rem;
 }
 .block--now { background: #EEF5FD; border-color: var(--sky-2); margin-top: 0; }
 .block__head { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem 1rem; flex-wrap: wrap; }
-.split { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.25rem; align-items: start; }
+.split {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 0 1.25rem;
+    align-items: start;
+}
 .split > .block { margin-top: 1.25rem; }
 .link-btn {
 background: none; border: 0; padding: .2rem 0; cursor: pointer;
@@ -1481,4 +1486,13 @@ a { color: inherit; text-decoration: none; }
 
 #mvp-proceso::before{
     color:#8a9099;
+}
+.decision__meta{
+    margin-top:6px;
+    font-size:13px;
+    color:#5f6f87;
+}
+
+.decision__meta strong{
+    color:#1b355d;
 }
