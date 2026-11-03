@@ -1435,18 +1435,11 @@ a { color: inherit; text-decoration: none; }
 }
 
 .roadmap-today::after{
-
     content:"Hoy";
-
     position:absolute;
-
-    top:118px;
-
-    left:-14px;
+    top:110px;
+    left:-12px;
 
     color:#e75301;
-
     font-weight:700;
-
-    white-space:nowrap;
 }
