@@ -396,7 +396,7 @@ if(totalDefs > 0){
         `;
 
     }
-
+}
 }
 function actualizarRoadmap(){
     const inicio = new Date("2026-10-01");
