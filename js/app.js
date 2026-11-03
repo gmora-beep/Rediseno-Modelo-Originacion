@@ -248,12 +248,10 @@ function actualizarResumenDecisiones(data){
                 .toLowerCase();
         let clasePrioridad =
             "level--bajo";
-        
         if(prioridad === "alta"){
             clasePrioridad =
                 "level--alto";
         }
-        
         if(prioridad === "media"){
             clasePrioridad =
                 "level--medio";
@@ -267,6 +265,13 @@ function actualizarResumenDecisiones(data){
                     <span class="level ${clasePrioridad}">
                         ${fila[6]}
                     </span>
+                </div>
+                <div class="decision__meta">
+                    <strong>Mesa:</strong>
+                    ${fila[3]}
+                    <br>
+                    <strong>Responsable:</strong>
+                    ${fila[2]}
                 </div>
             </li>
         `;
