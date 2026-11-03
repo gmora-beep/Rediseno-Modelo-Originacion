@@ -348,21 +348,22 @@ function actualizarResumenMVP(data){
         .textContent = baja;
     const totalDefs =
     cerradas + abiertas;
-if(totalDefs > 0){
-    const porcentajeCerradas =
-        (cerradas / totalDefs) * 100;
-    const barra =
-        document.querySelector(".defs-fill");
-    if(barra){
-        barra.style.background = `
-            linear-gradient(
-                to right,
-                #1b355d 0%,
-                #1b355d ${porcentajeCerradas}%,
-                #d6d9de ${porcentajeCerradas}%,
-                #d6d9de 100%
-            )
-        `;
+    if(totalDefs > 0){
+        const porcentajeCerradas =
+            (cerradas / totalDefs) * 100;
+        const barra =
+            document.querySelector(".defs-fill");
+        if(barra){
+            barra.style.background = `
+                linear-gradient(
+                    to right,
+                    #1b355d 0%,
+                    #1b355d ${porcentajeCerradas}%,
+                    #d6d9de ${porcentajeCerradas}%,
+                    #d6d9de 100%
+                )
+            `;
+        }
     }
 }
 function actualizarRoadmap(){
