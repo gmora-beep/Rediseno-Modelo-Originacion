@@ -4,6 +4,7 @@ async function cargarDashboard(data){
     actualizarMesas(data);
     actualizarResumenMVP(data);
     actualizarResumenDecisiones(data);
+    actualizarRoadmap();
     await cargarVista("views/decisiones.html");
     actualizarDecisiones(data);
 }
@@ -345,4 +346,33 @@ function actualizarResumenMVP(data){
         .textContent = media;
     document.getElementById("mvp-baja")
         .textContent = baja;
+}
+function actualizarRoadmap(){
+    const inicio =
+        new Date("2026-10-01");
+    const fin =
+        new Date("2027-01-25");
+    const hoy =
+        new Date();
+    const totalDias =
+        (fin - inicio) /
+        (1000 * 60 * 60 * 24);
+    const avanceDias =
+        (hoy - inicio) /
+        (1000 * 60 * 60 * 24);
+    let porcentaje =
+        (avanceDias / totalDias) * 100;
+    porcentaje =
+        Math.max(
+            0,
+            Math.min(100, porcentaje)
+        );
+    const marcador =
+        document.getElementById(
+            "roadmap-today"
+        );
+    if(marcador){
+        marcador.style.left =
+            `${porcentaje}%`;
+    }
 }
