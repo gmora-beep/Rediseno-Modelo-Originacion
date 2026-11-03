@@ -439,35 +439,61 @@ if(totalDefs > 0){
 }
 }
 function actualizarRoadmap(){
-    const inicio = new Date("2026-10-01");
-    const fin = new Date("2027-01-25");
+
+    const hitos = [
+        { fecha: new Date("2026-10-01"), pos: 3 },
+        { fecha: new Date("2026-10-08"), pos: 12 },
+        { fecha: new Date("2026-10-19"), pos: 26 },
+        { fecha: new Date("2026-11-02"), pos: 44 },
+        { fecha: new Date("2026-11-30"), pos: 63 },
+        { fecha: new Date("2026-12-28"), pos: 82 },
+        { fecha: new Date("2027-01-25"), pos: 98 }
+    ];
+
     const hoy = new Date();
-    const totalDias =
-        (fin - inicio) / (1000 * 60 * 60 * 24);
-    const avanceDias =
-        (hoy - inicio) / (1000 * 60 * 60 * 24);
-    let porcentaje =
-        (avanceDias / totalDias);
-    porcentaje =
-        Math.max(
-            0,
-            Math.min(1, porcentaje)
-        );
-    /*
-      La línea inicia al 8%
-      y termina al 92%
-    */
-    const inicioLinea = 8;
-    const finLinea = 92;
-    const posicion =
-        inicioLinea +
-        ((finLinea - inicioLinea) * porcentaje);
+
+    let posicion = hitos[0].pos;
+
+    for(let i = 0; i < hitos.length - 1; i++){
+
+        const actual = hitos[i];
+        const siguiente = hitos[i + 1];
+
+        if(
+            hoy >= actual.fecha &&
+            hoy <= siguiente.fecha
+        ){
+
+            const total =
+                siguiente.fecha - actual.fecha;
+
+            const transcurrido =
+                hoy - actual.fecha;
+
+            const avance =
+                transcurrido / total;
+
+            posicion =
+                actual.pos +
+                ((siguiente.pos - actual.pos) * avance);
+
+            break;
+        }
+
+        if(hoy > hitos[hitos.length - 1].fecha){
+            posicion = hitos[hitos.length - 1].pos;
+        }
+
+    }
+
     const marcador =
         document.getElementById(
             "roadmap-today"
         );
+
     if(marcador){
         marcador.style.left =
             `${posicion}%`;
     }
+
 }
