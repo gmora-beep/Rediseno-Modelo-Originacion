@@ -499,9 +499,7 @@ function actualizarRoadmap(){
 
 }
 function actualizarFecha(){
-
     const hoy = new Date();
-
     const fecha =
         hoy.toLocaleDateString(
             "es-MX",
@@ -511,12 +509,9 @@ function actualizarFecha(){
                 year: "numeric"
             }
         );
-
     const elemento =
         document.getElementById("fecha-hoy");
-
     if(elemento){
         elemento.textContent = fecha;
     }
-
 }
