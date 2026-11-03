@@ -348,31 +348,35 @@ function actualizarResumenMVP(data){
         .textContent = baja;
 }
 function actualizarRoadmap(){
-    const inicio =
-        new Date("2026-10-01");
-    const fin =
-        new Date("2027-01-25");
-    const hoy =
-        new Date();
+    const inicio = new Date("2026-10-01");
+    const fin = new Date("2027-01-25");
+    const hoy = new Date();
     const totalDias =
-        (fin - inicio) /
-        (1000 * 60 * 60 * 24);
+        (fin - inicio) / (1000 * 60 * 60 * 24);
     const avanceDias =
-        (hoy - inicio) /
-        (1000 * 60 * 60 * 24);
+        (hoy - inicio) / (1000 * 60 * 60 * 24);
     let porcentaje =
-        (avanceDias / totalDias) * 100;
+        (avanceDias / totalDias);
     porcentaje =
         Math.max(
             0,
-            Math.min(100, porcentaje)
+            Math.min(1, porcentaje)
         );
+    /*
+      La línea inicia al 8%
+      y termina al 92%
+    */
+    const inicioLinea = 8;
+    const finLinea = 92;
+    const posicion =
+        inicioLinea +
+        ((finLinea - inicioLinea) * porcentaje);
     const marcador =
         document.getElementById(
             "roadmap-today"
         );
     if(marcador){
         marcador.style.left =
-            `${porcentaje}%`;
+            `${posicion}%`;
     }
 }
