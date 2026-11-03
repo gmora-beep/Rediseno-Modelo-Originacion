@@ -1,5 +1,6 @@
 async function cargarDashboard(data){
     window.dashboardData = data;
+    actualizarFecha();
     actualizarHero(data);
     actualizarMesas(data);
     actualizarResumenMVP(data);
@@ -494,6 +495,28 @@ function actualizarRoadmap(){
     if(marcador){
         marcador.style.left =
             `${posicion}%`;
+    }
+
+}
+function actualizarFecha(){
+
+    const hoy = new Date();
+
+    const fecha =
+        hoy.toLocaleDateString(
+            "es-MX",
+            {
+                day: "2-digit",
+                month: "short",
+                year: "numeric"
+            }
+        );
+
+    const elemento =
+        document.getElementById("fecha-hoy");
+
+    if(elemento){
+        elemento.textContent = fecha;
     }
 
 }
