@@ -146,18 +146,53 @@ function actualizarMesas(data){
     document.getElementById("cumplimiento-registradas").textContent = onePage[1][5];
     document.getElementById("cumplimiento-cerradas").textContent = onePage[1][6];
     document.getElementById("cumplimiento-abiertas").textContent = onePage[1][7];
+    const cumplimientoTotal =
+    Number(onePage[1][6]) +
+    Number(onePage[1][7]);
+document.getElementById(
+    "cumplimiento-bar-cerradas"
+).style.width =
+`${(Number(onePage[1][6]) / cumplimientoTotal) * 100}%`;
+document.getElementById(
+    "cumplimiento-bar-abiertas"
+).style.width =
+`${(Number(onePage[1][7]) / cumplimientoTotal) * 100}%`;
+
     // Comercial
     document.getElementById("comercial-sesiones").textContent = onePage[2][2];
     document.getElementById("comercial-fecha").textContent = onePage[2][4];
     document.getElementById("comercial-registradas").textContent = onePage[2][5];
     document.getElementById("comercial-cerradas").textContent = onePage[2][6];
     document.getElementById("comercial-abiertas").textContent = onePage[2][7];
+    const comercialTotal =
+    Number(onePage[2][6]) +
+    Number(onePage[2][7]);
+document.getElementById(
+    "comercial-bar-cerradas"
+).style.width =
+`${(Number(onePage[2][6]) / comercialTotal) * 100}%`;
+document.getElementById(
+    "comercial-bar-abiertas"
+).style.width =
+`${(Number(onePage[2][7]) / comercialTotal) * 100}%`;
+
     // Tecnología
     document.getElementById("tecnologia-sesiones").textContent = onePage[3][2];
     document.getElementById("tecnologia-fecha").textContent = onePage[3][4];
     document.getElementById("tecnologia-registradas").textContent = onePage[3][5];
     document.getElementById("tecnologia-cerradas").textContent = onePage[3][6];
     document.getElementById("tecnologia-abiertas").textContent = onePage[3][7];
+    const tecnologiaTotal =
+    Number(onePage[3][6]) +
+    Number(onePage[3][7]);
+document.getElementById(
+    "tecnologia-bar-cerradas"
+).style.width =
+`${(Number(onePage[3][6]) / tecnologiaTotal) * 100}%`;
+document.getElementById(
+    "tecnologia-bar-abiertas"
+).style.width =
+`${(Number(onePage[3][7]) / tecnologiaTotal) * 100}%`;
 }
 
 async function cargarVista(ruta){
