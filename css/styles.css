@@ -1196,10 +1196,16 @@ a { color: inherit; text-decoration: none; }
 
 .defs-status{
     display:flex;
-    flex-wrap:wrap;
-    gap:18px;
+    justify-content:space-between;
+    align-items:center;
+
+    white-space:nowrap;
+
+    gap:8px;
+
+    margin-top:10px;
+
     font-size:13px;
-    margin-bottom:6px;
 }
 
 .defs-status span{
@@ -1443,4 +1449,36 @@ a { color: inherit; text-decoration: none; }
 
     color:#e75301;
     font-weight:700;
+}
+#mvp-pendientes{
+    color:#e75301;
+    font-weight:600;
+}
+
+#mvp-revision{
+    color:#494d7d;
+    font-weight:600;
+}
+
+#mvp-proceso{
+    color:#8a9099;
+    font-weight:600;
+}
+#mvp-pendientes::before,
+#mvp-revision::before,
+#mvp-proceso::before{
+    content:"■";
+    margin-right:5px;
+}
+
+#mvp-pendientes::before{
+    color:#e75301;
+}
+
+#mvp-revision::before{
+    color:#494d7d;
+}
+
+#mvp-proceso::before{
+    color:#8a9099;
 }
