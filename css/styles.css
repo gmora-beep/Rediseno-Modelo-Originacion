@@ -1272,7 +1272,7 @@ a { color: inherit; text-decoration: none; }
     color:#a34a25;
 }
 #decisiones-dashboard{
-    max-height:550px;
+    max-height:6200px;
     overflow-y:auto;
     padding-right:8px;
 }
