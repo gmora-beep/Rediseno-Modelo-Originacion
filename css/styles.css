@@ -1598,3 +1598,56 @@ a { color: inherit; text-decoration: none; }
 .ent-item a:hover{
     text-decoration:underline;
 }
+    /* ===== FOCOS DE ATENCIÓN CRÍTICOS ===== */
+.foco-card{
+    padding:14px 0;
+    border-bottom:1px solid #d9e3f5;
+}
+
+.foco-card:last-child{
+    border-bottom:none;
+}
+
+.foco-title{
+    margin:0 0 10px;
+
+    font-weight:700;
+
+    color:#1b355d;
+
+    line-height:1.35;
+}
+
+.foco-label{
+    display:block;
+
+    font-size:11px;
+
+    color:#7a8497;
+
+    text-transform:uppercase;
+
+    letter-spacing:.04em;
+}
+
+.foco-mesa{
+    margin-bottom:8px;
+}
+
+.foco-mesa strong{
+    display:block;
+
+    margin-top:2px;
+
+    color:#1b355d;
+}
+
+.foco-responsable strong{
+    display:block;
+
+    margin-top:2px;
+
+    color:#5f6f87;
+
+    font-weight:600;
+}
