@@ -1609,21 +1609,26 @@ a { color: inherit; text-decoration: none; }
 }
 
 .foco-title{
-    margin:0 0 10px;
+    margin:0 0 4px;
     font-weight:700;
     font-size:15px;
-    line-height:1.4;
     color:#1b355d;
+    line-height:1.35;
+}
+
+.foco-desc{
+    margin:0 0 8px;
+    color:#5f6f87;
+    font-size:13px;
+    line-height:1.4;
 }
 
 .foco-meta{
-    margin-top:6px;
+    margin:2px 0;
     font-size:13px;
-    line-height:1.4;
     color:#5f6f87;
 }
 
 .foco-meta strong{
     color:#1b355d;
-    font-weight:700;
 }
