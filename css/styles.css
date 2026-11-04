@@ -1284,13 +1284,7 @@ a { color: inherit; text-decoration: none; }
     list-style: none;
     padding-left: 0;
 }
-@media print {
-    #decisiones-dashboard{
-        max-height:none !important;
-        overflow:visible !important;
-        display:none !important;
-    }
-}
+
 /* Scroll elegante */
 #decisiones-dashboard::-webkit-scrollbar{
     width: 8px;
