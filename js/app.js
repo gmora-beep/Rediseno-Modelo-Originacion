@@ -527,3 +527,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+window.addEventListener("beforeprint", () => {
+    document.body.classList.add("printing");
+});
+window.addEventListener("afterprint", () => {
+    document.body.classList.remove("printing");
+});
