@@ -166,7 +166,10 @@ margin-top: 1.25rem;
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 0 1.25rem;
-    align-items: start;
+    align-items: stretch;
+}
+.split > section{
+    height:100%;
 }
 .split > .block { margin-top: 1.25rem; }
 .link-btn {
