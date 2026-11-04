@@ -515,3 +515,15 @@ function actualizarFecha(){
         elemento.textContent = fecha;
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const btnImprimir =
+        document.getElementById("btn-imprimir");
+    if(btnImprimir){
+        btnImprimir.addEventListener("click", () => {
+            setTimeout(() => {
+                window.print();
+            }, 100);
+        });
+    }
+});
