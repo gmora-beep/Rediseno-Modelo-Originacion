@@ -233,131 +233,131 @@ let semanalCargado = false;
 let mesaSeleccionada = "todas";
 let responsableSeleccionado = "todos";
 document.addEventListener("DOMContentLoaded", () => {
+
     const tabTablero =
         document.getElementById("tab-tablero");
+
     const tabDecisiones =
         document.getElementById("tab-actividades");
+
+    const tabSemanal =
+        document.getElementById("tab-semanal");
+
     const panelTablero =
         document.getElementById("panel-tablero");
+
     const panelDecisiones =
         document.getElementById("panel-actividades");
-    const tabSemanal =
-        document.getElementById(
-            "tab-semanal"
-        );    
+
     const panelSemanal =
-        document.getElementById(
-            "panel-semanal"
-        );
+        document.getElementById("panel-semanal");
+
     tabDecisiones.addEventListener(
         "click",
         async () => {
-    
+
             panelTablero.hidden = true;
             panelDecisiones.hidden = false;
             panelSemanal.hidden = true;
-    
+
             tabTablero.setAttribute(
                 "aria-selected",
                 "false"
             );
-    
+
             tabSemanal.setAttribute(
                 "aria-selected",
                 "false"
             );
-    
+
             tabDecisiones.setAttribute(
                 "aria-selected",
                 "true"
             );
-    
+
             if(!decisionesCargadas){
-    
+
                 await cargarVista(
                     "views/decisiones.html"
                 );
-    
+
                 actualizarDecisiones(
                     window.dashboardData
                 );
-    
+
                 renderResponsables(
                     window.dashboardData
                 );
-    
+
                 activarFiltrosMesas();
-    
+
                 decisionesCargadas = true;
-    
+
             }
-    
+
         }
     );
+
     tabSemanal.addEventListener(
         "click",
         async () => {
-    
+
             panelTablero.hidden = true;
             panelDecisiones.hidden = true;
             panelSemanal.hidden = false;
-    
+
             tabTablero.setAttribute(
                 "aria-selected",
                 "false"
             );
-    
+
             tabDecisiones.setAttribute(
                 "aria-selected",
                 "false"
             );
-    
+
             tabSemanal.setAttribute(
                 "aria-selected",
                 "true"
             );
-    
+
             if(!semanalCargado){
-    
+
                 await cargarVistaSemanal();
-    
+
                 semanalCargado = true;
-    
+
             }
-    
+
         }
     );
+
     tabTablero.addEventListener(
         "click",
-        () => {    
+        () => {
+
             panelTablero.hidden = false;
             panelDecisiones.hidden = true;
-            panelSemanal.hidden = true;    
+            panelSemanal.hidden = true;
+
             tabTablero.setAttribute(
                 "aria-selected",
                 "true"
-            );    
+            );
+
             tabDecisiones.setAttribute(
                 "aria-selected",
                 "false"
-            );    
+            );
+
             tabSemanal.setAttribute(
                 "aria-selected",
                 "false"
-            );    
+            );
+
         }
     );
-        panelTablero.hidden = false;
-        panelDecisiones.hidden = true;
-        tabTablero.setAttribute(
-            "aria-selected",
-            "true"
-        );
-        tabDecisiones.setAttribute(
-            "aria-selected",
-            "false"
-        );
-    });
+
 });
 
 function actualizarResumenDecisiones(data){
