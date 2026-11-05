@@ -7,6 +7,7 @@ async function cargarDashboard(data){
     actualizarResumenDecisiones(data);
     actualizarRoadmap();
     await cargarVista("views/decisiones.html");
+    actualizarSesiones(data);
     actualizarDecisiones(data);
     renderResponsables(data);
     activarFiltrosMesas();
@@ -733,4 +734,96 @@ function activarFiltrosMesas(){
             }
         );
     });
+}
+function actualizarSesiones(data){
+    const hoja =
+        data["Cadencia"];
+    if(!hoja){
+        return;
+    }
+    const cumplimiento =
+        document.querySelector(
+            "#sesiones-cumplimiento .sesion-lista"
+        );
+    const comercial =
+        document.querySelector(
+            "#sesiones-comercial .sesion-lista"
+        );
+    const tecnologia =
+        document.querySelector(
+            "#sesiones-tecnologia .sesion-lista"
+        );
+    if(
+        !cumplimiento ||
+        !comercial ||
+        !tecnologia
+    ){
+        return;
+    }
+    cumplimiento.innerHTML = "";
+    comercial.innerHTML = "";
+    tecnologia.innerHTML = "";
+    let totalCumplimiento = 0;
+    let totalComercial = 0;
+    let totalTecnologia = 0;
+    hoja.slice(2).forEach(fila => {
+        const tipo = fila[1];
+        const fecha = fila[2];
+        const mesa = fila[3];
+        const grabacion = fila[4];
+        const minuta = fila[5];
+        const html = `
+            <div class="sesion-item">
+                <div class="sesion-fecha">
+                    ${fecha}
+                </div>
+                <div class="sesion-titulo">
+                    ${tipo}
+                </div>
+                <a class="sesion-link"
+                   href="${grabacion}"
+                   target="_blank">
+                    🎥 Grabación
+                </a>
+                <a class="sesion-link"
+                   href="${minuta}"
+                   target="_blank">
+                    📝 Minuta
+                </a>
+            </div>
+        `;
+        if(
+            String(mesa)
+                .includes("Cumplimiento")
+        ){
+            cumplimiento.innerHTML += html;
+            totalCumplimiento++;
+        }
+        else if(
+            String(mesa)
+                .includes("Estrategia")
+        ){
+            comercial.innerHTML += html;
+            totalComercial++;
+        }
+        else if(
+            String(mesa)
+                .includes("Arquitectura")
+        ){
+            tecnologia.innerHTML += html;
+            totalTecnologia++;
+        }
+    });
+    document.getElementById(
+        "resumen-cumplimiento"
+    ).textContent =
+        totalCumplimiento;
+    document.getElementById(
+        "resumen-comercial"
+    ).textContent =
+        totalComercial;
+    document.getElementById(
+        "resumen-tecnologia"
+    ).textContent =
+        totalTecnologia;
 }
