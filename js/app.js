@@ -302,34 +302,38 @@ document.addEventListener("DOMContentLoaded", () => {
     tabSemanal.addEventListener(
         "click",
         async () => {
-
+    
             panelTablero.hidden = true;
             panelDecisiones.hidden = true;
             panelSemanal.hidden = false;
-
+    
             tabTablero.setAttribute(
                 "aria-selected",
                 "false"
             );
-
+    
             tabDecisiones.setAttribute(
                 "aria-selected",
                 "false"
             );
-
+    
             tabSemanal.setAttribute(
                 "aria-selected",
                 "true"
             );
-
+    
             if(!semanalCargado){
-
+    
                 await cargarVistaSemanal();
-
+    
+                actualizarSesiones(
+                    window.dashboardData
+                );
+    
                 semanalCargado = true;
-
+    
             }
-
+    
         }
     );
 
