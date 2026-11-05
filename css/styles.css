@@ -1353,7 +1353,7 @@ a { color: inherit; text-decoration: none; }
 /* ===== ROADMAP MVP ===== */
 
 .roadmap-card{
-    width:95%;
+    width:100%;
     margin:20px 0 0;
     padding:0;
 }
@@ -1380,7 +1380,7 @@ a { color: inherit; text-decoration: none; }
     position:absolute;
     top:60px;
     left:3%;
-    width:39%;
+    width:0;
     height:4px;
     background:#1b355d;
 }
@@ -1448,15 +1448,9 @@ a { color: inherit; text-decoration: none; }
 
 .roadmap-today{
     position:absolute;
-
-    left:48%;
-
     top:38px;
-
     border-left:2px dashed #e75301;
-
     height:110px;
-
     width:0;
 }
 
