@@ -249,55 +249,84 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById(
             "panel-semanal"
         );
-    tabDecisiones.addEventListener("click", async () => {
-        panelTablero.hidden = true;
-        panelDecisiones.hidden = false;
-        tabTablero.setAttribute(
-            "aria-selected",
-            "false"
-        );
-    tabSemanal.addEventListener(
+    tabDecisiones.addEventListener(
         "click",
         async () => {
+    
             panelTablero.hidden = true;
-            panelDecisiones.hidden = true;
-            panelSemanal.hidden = false;
+            panelDecisiones.hidden = false;
+            panelSemanal.hidden = true;
+    
             tabTablero.setAttribute(
                 "aria-selected",
                 "false"
             );
+    
+            tabSemanal.setAttribute(
+                "aria-selected",
+                "false"
+            );
+    
+            tabDecisiones.setAttribute(
+                "aria-selected",
+                "true"
+            );
+    
+            if(!decisionesCargadas){
+    
+                await cargarVista(
+                    "views/decisiones.html"
+                );
+    
+                actualizarDecisiones(
+                    window.dashboardData
+                );
+    
+                renderResponsables(
+                    window.dashboardData
+                );
+    
+                activarFiltrosMesas();
+    
+                decisionesCargadas = true;
+    
+            }
+    
+        }
+    );
+    tabSemanal.addEventListener(
+        "click",
+        async () => {
+    
+            panelTablero.hidden = true;
+            panelDecisiones.hidden = true;
+            panelSemanal.hidden = false;
+    
+            tabTablero.setAttribute(
+                "aria-selected",
+                "false"
+            );
+    
             tabDecisiones.setAttribute(
                 "aria-selected",
                 "false"
             );
+    
             tabSemanal.setAttribute(
                 "aria-selected",
                 "true"
             );
+    
             if(!semanalCargado){
+    
                 await cargarVistaSemanal();
+    
                 semanalCargado = true;
+    
             }
+    
         }
     );
-        tabDecisiones.setAttribute(
-            "aria-selected",
-            "true"
-        );
-        if(!decisionesCargadas){        
-            await cargarVista(
-                "views/decisiones.html"
-            );        
-            actualizarDecisiones(
-                window.dashboardData
-            );        
-            renderResponsables(
-                window.dashboardData
-            );        
-            activarFiltrosMesas();        
-            decisionesCargadas = true;
-        }
-    });
     tabTablero.addEventListener(
         "click",
         () => {    
