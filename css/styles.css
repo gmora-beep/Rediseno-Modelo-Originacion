@@ -1678,3 +1678,126 @@ a { color: inherit; text-decoration: none; }
     background:#1b355d;
     color:#fff;
 }
+/* ==================================================
+   RESUMEN SEMANAL
+================================================== */
+
+.semanal-bloque{
+    margin-top:0;
+}
+
+.semanas-chips{
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+
+    margin-bottom:20px;
+}
+
+.semana-chip{
+
+    cursor:pointer;
+
+    border:1px solid #d3e2f4;
+
+    background:#fff;
+
+    color:#1b355d;
+
+    border-radius:999px;
+
+    padding:10px 18px;
+
+    font-weight:600;
+}
+
+.semana-chip.active{
+
+    background:#1b355d;
+
+    color:#fff;
+
+    border-color:#1b355d;
+}
+
+.semana-detalle{
+
+    border-top:1px solid #d9e3f5;
+
+    padding-top:20px;
+}
+
+.semana-resumen{
+
+    color:#44546E;
+
+    font-size:15px;
+
+    line-height:1.6;
+
+    margin-bottom:20px;
+}
+
+.semana-puntos h4{
+
+    margin-bottom:10px;
+}
+
+.semana-puntos ul{
+
+    margin:0;
+    padding-left:20px;
+}
+
+.semana-puntos li{
+
+    margin-bottom:8px;
+}
+
+/* ==================================================
+   SESIONES
+================================================== */
+.sesiones-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px,1fr)
+        );
+    gap:16px;
+}
+
+.sesion-card{
+    border:1px solid #d9e3f5;
+    border-radius:12px;
+    padding:16px;
+    background:#fff;
+}
+
+.sesion-card h4{
+    margin:0 0 6px;
+}
+
+.sesion-fecha{
+    display:block;
+    color:#5f6f87;
+    font-size:13px;
+    margin-bottom:12px;
+}
+
+.sesion-links{
+    display:flex;
+    gap:14px;
+}
+
+.sesion-links a{
+    text-decoration:none;
+    font-size:14px;
+    color:#1f5fa8;
+    font-weight:600;
+}
+
+.sesion-links a:hover{
+    text-decoration:underline;
+}
