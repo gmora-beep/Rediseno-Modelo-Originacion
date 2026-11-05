@@ -526,14 +526,15 @@ function actualizarRoadmap(){
     
     }
 }
+
 function renderResponsables(data){
     const hoja =
         data["Definiciones pendientes"];
-    const contenedor =
+    const select =
         document.getElementById(
-            "filtro-responsables"
+            "responsable-select"
         );
-    if(!hoja || !contenedor){
+    if(!hoja || !select){
         return;
     }
     const responsables = [
@@ -544,42 +545,31 @@ function renderResponsables(data){
                 .filter(Boolean)
         )
     ];
-    contenedor.innerHTML = `
-        <button
-            class="chip-btn active"
-            data-responsable="todos">
+    select.innerHTML = `
+        <option value="todos">
             Todos
-        </button>
+        </option>
     `;
-    responsables.forEach(nombre => {
-        contenedor.innerHTML += `
-            <button
-                class="chip-btn"
-                data-responsable="${nombre}">
-                ${nombre}
-            </button>
-        `;
-    });
-    const botones =
-        contenedor.querySelectorAll(
-            ".chip-btn"
-        );
-    botones.forEach(btn => {
-        btn.addEventListener(
-            "click",
-            () => {
-                botones.forEach(b =>
-                    b.classList.remove("active")
-                );
-                btn.classList.add("active");
-                responsableSeleccionado =
-                    btn.dataset.responsable;
-                actualizarDecisiones(
-                    window.dashboardData
-                );
-            }
-        );
-    });
+    responsables
+        .sort()
+        .forEach(nombre => {
+            select.innerHTML += `
+                <option
+                    value="${nombre}">
+                    ${nombre}
+                </option>
+            `;
+        });
+    select.addEventListener(
+        "change",
+        () => {
+            responsableSeleccionado =
+                select.value;
+            actualizarDecisiones(
+                window.dashboardData
+            );
+        }
+    );
 }
 
 function actualizarFecha(){
