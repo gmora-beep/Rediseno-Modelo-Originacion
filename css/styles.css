@@ -1831,3 +1831,42 @@ a { color: inherit; text-decoration: none; }
 .sesion-link:hover{
     text-decoration:underline;
 }
+.sesiones-detalle{
+    margin-top:16px;
+    border-top:1px solid #d9e3f5;
+    padding-top:12px;
+}
+
+.sesiones-detalle .sesion-item{
+    display:grid;
+    grid-template-columns:
+        1fr;
+    gap:6px;
+    padding:10px 0;
+    border-bottom:1px solid #eef3fa;
+}
+
+.sesiones-detalle .sesion-item:last-child{
+    border-bottom:none;
+}
+
+.sesiones-detalle .sesion-fecha{
+    font-size:12px;
+    font-weight:700;
+    color:#1b355d;
+}
+
+.sesiones-detalle .sesion-titulo{
+    font-size:13px;
+    line-height:1.35;
+}
+
+.sesiones-detalle .sesion-links{
+    display:flex;
+    gap:14px;
+}
+
+.sesiones-detalle .sesion-links a{
+    font-size:12px;
+    text-decoration:none;
+}
