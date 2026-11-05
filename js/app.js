@@ -742,6 +742,8 @@ function activarFiltrosMesas(){
 function actualizarSesiones(data){
     const hoja =
         data["Cadencia"];
+    console.log("CADENCIA");
+    console.table(hoja.slice(12,20));
     if(!hoja){
         return;
     }
