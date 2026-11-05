@@ -747,9 +747,17 @@ function actualizarSesiones(data){
     if(!hoja){
         return;
     }
-    const listado =
+    const cumplimiento =
         document.getElementById(
-            "sesiones-listado"
+            "lista-cumplimiento"
+        );    
+    const comercial =
+        document.getElementById(
+            "lista-comercial"
+        );    
+    const tecnologia =
+        document.getElementById(
+            "lista-tecnologia"
         );
     if(!listado){
         return;
