@@ -617,19 +617,22 @@ function activarFiltrosMesas(){
         btn.addEventListener(
             "click",
             () => {
-                botones.forEach(b =>
-                    botones.forEach(b => {                    
-                        b.classList.remove("active");                    
-                        b.setAttribute(
-                            "aria-pressed",
-                            "false"
-                        );                    
-                    });                    
-                    btn.classList.add("active");                    
-                    btn.setAttribute(
-                        "aria-pressed",
-                        "true"
+                botones.forEach(b => {
+                    b.classList.remove(
+                        "active"
                     );
+                    b.setAttribute(
+                        "aria-pressed",
+                        "false"
+                    );
+                });
+                btn.classList.add(
+                    "active"
+                );
+                btn.setAttribute(
+                    "aria-pressed",
+                    "true"
+                );
                 mesaSeleccionada =
                     btn.dataset.mesa;
                 actualizarDecisiones(
