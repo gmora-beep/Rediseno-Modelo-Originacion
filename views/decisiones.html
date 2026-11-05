@@ -6,26 +6,41 @@
         </p>
     </header>
 
-  <!-- Filtros -->
+    <!-- FILTRO MESA -->
     <div class="filters"
          role="group"
          aria-label="Filtrar por mesa"
          id="filtro-mesas">
-        <button class="chip-btn active">
+        <button class="chip-btn active"
+                data-mesa="todas">
             Todas
         </button>
-        <button class="chip-btn">
+        <button class="chip-btn"
+                data-mesa="Mesa de Cumplimiento y Riesgo">
             Mesa de Cumplimiento y Riesgo
         </button>
-        <button class="chip-btn">
+        <button class="chip-btn"
+                data-mesa="Mesa de Estrategia Comercial">
             Mesa de Estrategia Comercial
         </button>
-        <button class="chip-btn">
+        <button class="chip-btn"
+                data-mesa="Mesa de Arquitectura y Tecnología">
             Mesa de Arquitectura y Tecnología
         </button>
     </div>
 
-    <!-- Contadores -->
+    <!-- FILTRO RESPONSABLE -->
+    <div class="filters"
+         role="group"
+         aria-label="Filtrar por responsable"
+         id="filtro-responsables">
+        <button class="chip-btn active"
+                data-responsable="todos">
+            Todos
+        </button>
+    </div>
+
+    <!-- CONTADORES -->
     <ul class="counts">
         <li>
             <strong id="dec-pendientes">0</strong>
@@ -37,7 +52,7 @@
         </li>
     </ul>
 
-    <!-- Columnas -->
+    <!-- COLUMNAS -->
     <div class="cols">
         <section>
             <h3>Decisiones pendientes</h3>
