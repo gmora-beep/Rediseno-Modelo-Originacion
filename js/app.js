@@ -9,6 +9,7 @@ async function cargarDashboard(data){
     await cargarVista("views/decisiones.html");
     actualizarDecisiones(data);
     renderResponsables(data);
+    activarFiltrosMesas();
 }
 
 function actualizarHero(data){
@@ -63,8 +64,6 @@ function actualizarDecisiones(data){
         const fecha = fila[4];
         const estatus = fila[5];
         const prioridad = fila[6];
-        const responsable = fila[2];
-        const mesa = fila[3];
         if(
             mesaSeleccionada !== "todas" &&
             mesa !== mesaSeleccionada
@@ -615,40 +614,6 @@ window.addEventListener("afterprint", () => {
     document.body.classList.remove("printing");
 });
 
-function renderResponsables(data){
-    const hoja =
-        data["Definiciones pendientes"];
-    const contenedor =
-        document.getElementById(
-            "filtro-responsables"
-        );
-    if(!hoja || !contenedor){
-        return;
-    }
-    const responsables =
-        [...new Set(
-            hoja
-                .slice(1)
-                .map(fila => fila[2])
-                .filter(Boolean)
-        )];
-    contenedor.innerHTML = `
-        <button class="chip-btn active"
-                data-responsable="todos">
-            Todos
-        </button>
-
-    `;
-    responsables.forEach(nombre => {
-        contenedor.innerHTML += `
-            <button class="chip-btn"
-                    data-responsable="${nombre}">
-                ${nombre}
-            </button>
-
-        `;
-    });
-}
 function activarFiltrosMesas(){
     const botones =
         document.querySelectorAll(
