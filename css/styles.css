@@ -1668,3 +1668,13 @@ a { color: inherit; text-decoration: none; }
     color:#1b355d;
     min-width:260px;
 }
+.chip-btn.active{
+    background:#1b355d;
+    border-color:#1b355d;
+    color:#fff;
+}
+
+.chip-btn.active:hover{
+    background:#1b355d;
+    color:#fff;
+}
