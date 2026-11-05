@@ -1797,7 +1797,50 @@ a { color: inherit; text-decoration: none; }
     color:#1f5fa8;
     font-weight:600;
 }
+.sesion-mesa{
+    margin-top:20px;
+}
 
+.sesion-mesa h4{
+    margin-bottom:12px;
+    color:#1b355d;
+}
+
+.sesion-item{
+    display:grid;
+    grid-template-columns:140px 1fr auto auto;
+
+    gap:16px;
+
+    align-items:center;
+
+    padding:10px 0;
+
+    border-bottom:1px solid #d9e3f5;
+}
+
+.sesion-item:last-child{
+    border-bottom:none;
+}
+
+.sesion-fecha{
+    font-weight:700;
+    color:#1b355d;
+}
+
+.sesion-titulo{
+    color:#44546e;
+}
+
+.sesion-link{
+    color:#1f5fa8;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.sesion-link:hover{
+    text-decoration:underline;
+}
 .sesion-links a:hover{
     text-decoration:underline;
 }
