@@ -740,6 +740,7 @@ function activarFiltrosMesas(){
     });
 }
 function actualizarSesiones(data){
+    console.log(Object.keys(data));
     const hoja =
         data["Cadencia"];
     console.log("CADENCIA");
