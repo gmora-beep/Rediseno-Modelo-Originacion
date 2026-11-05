@@ -240,13 +240,17 @@ document.addEventListener("DOMContentLoaded", () => {
             "aria-selected",
             "true"
         );
-        if(!decisionesCargadas){
+        if(!decisionesCargadas){        
             await cargarVista(
                 "views/decisiones.html"
-            );
+            );        
             actualizarDecisiones(
                 window.dashboardData
-            );
+            );        
+            renderResponsables(
+                window.dashboardData
+            );        
+            activarFiltrosMesas();        
             decisionesCargadas = true;
         }
     });
