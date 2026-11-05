@@ -8,6 +8,7 @@ async function cargarDashboard(data){
     actualizarRoadmap();
     await cargarVista("views/decisiones.html");
     actualizarDecisiones(data);
+    renderResponsables(data);
 }
 
 function actualizarHero(data){
@@ -62,6 +63,21 @@ function actualizarDecisiones(data){
         const fecha = fila[4];
         const estatus = fila[5];
         const prioridad = fila[6];
+        const responsable = fila[2];
+        const mesa = fila[3];
+        if(
+            mesaSeleccionada !== "todas" &&
+            mesa !== mesaSeleccionada
+        ){
+            return;
+        }
+        
+        if(
+            responsableSeleccionado !== "todos" &&
+            responsable !== responsableSeleccionado
+        ){
+            return;
+        }
         const tarjeta = `
             <li class="act">
                 <div class="act__date">
@@ -203,6 +219,8 @@ async function cargarVista(ruta){
 }
 
 let decisionesCargadas = false;
+let mesaSeleccionada = "todas";
+let responsableSeleccionado = "todos";
 document.addEventListener("DOMContentLoaded", () => {
     const tabTablero =
         document.getElementById("tab-tablero");
@@ -505,6 +523,62 @@ function actualizarRoadmap(){
     
     }
 }
+function renderResponsables(data){
+    const hoja =
+        data["Definiciones pendientes"];
+    const contenedor =
+        document.getElementById(
+            "filtro-responsables"
+        );
+    if(!hoja || !contenedor){
+        return;
+    }
+    const responsables = [
+        ...new Set(
+            hoja
+                .slice(1)
+                .map(fila => fila[2])
+                .filter(Boolean)
+        )
+    ];
+    contenedor.innerHTML = `
+        <button
+            class="chip-btn active"
+            data-responsable="todos">
+            Todos
+        </button>
+    `;
+    responsables.forEach(nombre => {
+        contenedor.innerHTML += `
+            <button
+                class="chip-btn"
+                data-responsable="${nombre}">
+                ${nombre}
+            </button>
+        `;
+    });
+    const botones =
+        contenedor.querySelectorAll(
+            ".chip-btn"
+        );
+    botones.forEach(btn => {
+        btn.addEventListener(
+            "click",
+            () => {
+                botones.forEach(b =>
+                    b.classList.remove("active")
+                );
+                btn.classList.add("active");
+                responsableSeleccionado =
+                    btn.dataset.responsable;
+                actualizarDecisiones(
+                    window.dashboardData
+                );
+            }
+        );
+    });
+}
+
 function actualizarFecha(){
     const hoy = new Date();
     const fecha =
@@ -540,3 +614,60 @@ window.addEventListener("beforeprint", () => {
 window.addEventListener("afterprint", () => {
     document.body.classList.remove("printing");
 });
+
+function renderResponsables(data){
+    const hoja =
+        data["Definiciones pendientes"];
+    const contenedor =
+        document.getElementById(
+            "filtro-responsables"
+        );
+    if(!hoja || !contenedor){
+        return;
+    }
+    const responsables =
+        [...new Set(
+            hoja
+                .slice(1)
+                .map(fila => fila[2])
+                .filter(Boolean)
+        )];
+    contenedor.innerHTML = `
+        <button class="chip-btn active"
+                data-responsable="todos">
+            Todos
+        </button>
+
+    `;
+    responsables.forEach(nombre => {
+        contenedor.innerHTML += `
+            <button class="chip-btn"
+                    data-responsable="${nombre}">
+                ${nombre}
+            </button>
+
+        `;
+    });
+}
+function activarFiltrosMesas(){
+    const botones =
+        document.querySelectorAll(
+            "#filtro-mesas .chip-btn"
+        );
+    botones.forEach(btn => {
+        btn.addEventListener(
+            "click",
+            () => {
+                botones.forEach(b =>
+                    b.classList.remove("active")
+                );
+                btn.classList.add("active");
+                mesaSeleccionada =
+                    btn.dataset.mesa;
+                actualizarDecisiones(
+                    window.dashboardData
+                );
+            }
+        );
+    });
+}
