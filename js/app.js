@@ -454,8 +454,8 @@ function actualizarRoadmap(){
             (fecha - inicio) /
             (1000 * 60 * 60 * 24);
         return (
-            4 +
-            ((dias / totalDias) * 92)
+            1 +
+            ((dias / totalDias) * 98)
         );
     };
     const hitos = [
