@@ -440,63 +440,52 @@ if(totalDefs > 0){
 }
 }
 function actualizarRoadmap(){
-
+    const inicio =
+        new Date("2026-10-01");
+    const fin =
+        new Date("2027-01-25");
+    const hoy =
+        new Date();
+    const totalDias =
+        (fin - inicio) /
+        (1000 * 60 * 60 * 24);
+    const calcularPosicion = (fecha) => {
+        const dias =
+            (fecha - inicio) /
+            (1000 * 60 * 60 * 24);
+        return (
+            8 +
+            ((dias / totalDias) * 84)
+        );
+    };
     const hitos = [
-        { fecha: new Date("2026-10-01"), pos: 3 },
-        { fecha: new Date("2026-10-08"), pos: 12 },
-        { fecha: new Date("2026-10-19"), pos: 26 },
-        { fecha: new Date("2026-11-02"), pos: 44 },
-        { fecha: new Date("2026-11-30"), pos: 63 },
-        { fecha: new Date("2026-12-28"), pos: 82 },
-        { fecha: new Date("2027-01-25"), pos: 98 }
+        [".hito-fresh","2026-10-01"],
+        [".hito-mesas","2026-10-08"],
+        [".hito-kickoff","2026-10-19"],
+        [".hito-camino","2026-11-03"],
+        [".hito-sombra","2026-11-30"],
+        [".hito-operacion","2026-12-28"],
+        [".hito-fin","2027-01-25"]
+
     ];
-
-    const hoy = new Date();
-
-    let posicion = hitos[0].pos;
-
-    for(let i = 0; i < hitos.length - 1; i++){
-
-        const actual = hitos[i];
-        const siguiente = hitos[i + 1];
-
-        if(
-            hoy >= actual.fecha &&
-            hoy <= siguiente.fecha
-        ){
-
-            const total =
-                siguiente.fecha - actual.fecha;
-
-            const transcurrido =
-                hoy - actual.fecha;
-
-            const avance =
-                transcurrido / total;
-
-            posicion =
-                actual.pos +
-                ((siguiente.pos - actual.pos) * avance);
-
-            break;
+    hitos.forEach(h => {
+        const el =
+            document.querySelector(h[0]);
+        if(el){
+            el.style.left =
+                `${calcularPosicion(
+                    new Date(h[1])
+                )}%`;
         }
-
-        if(hoy > hitos[hitos.length - 1].fecha){
-            posicion = hitos[hitos.length - 1].pos;
-        }
-
-    }
-
+    });
     const marcador =
         document.getElementById(
             "roadmap-today"
         );
-
     if(marcador){
         marcador.style.left =
-            `${posicion}%`;
+            `${calcularPosicion(hoy)}%`;
     }
-
 }
 function actualizarFecha(){
     const hoy = new Date();
