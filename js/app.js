@@ -454,8 +454,8 @@ function actualizarRoadmap(){
             (fecha - inicio) /
             (1000 * 60 * 60 * 24);
         return (
-            1 +
-            ((dias / totalDias) * 98)
+            4 +
+            ((dias / totalDias) * 92)
         );
     };
     const hitos = [
@@ -478,25 +478,32 @@ function actualizarRoadmap(){
                 )}%`;
         }
     });
+    const posicionHoy =
+        calcularPosicion(hoy);
+    
     const marcador =
         document.getElementById(
             "roadmap-today"
         );
+    
     if(marcador){
+    
         marcador.style.left =
-            `${calcularPosicion(hoy)}%`;
+            `${posicionHoy}%`;
+    
     }
+    
     const progreso =
-    document.querySelector(
-        ".roadmap-progress"
-    );
-
-if(progreso){
-
-    progreso.style.width =
-        `${posicion - 3}%`;
-
-}
+        document.querySelector(
+            ".roadmap-progress"
+        );
+    
+    if(progreso){
+    
+        progreso.style.width =
+            `${posicionHoy - 4}%`;
+    
+    }
 }
 function actualizarFecha(){
     const hoy = new Date();
