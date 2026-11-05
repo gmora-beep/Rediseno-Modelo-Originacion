@@ -486,6 +486,17 @@ function actualizarRoadmap(){
         marcador.style.left =
             `${calcularPosicion(hoy)}%`;
     }
+    const progreso =
+    document.querySelector(
+        ".roadmap-progress"
+    );
+
+if(progreso){
+
+    progreso.style.width =
+        `${posicion - 3}%`;
+
+}
 }
 function actualizarFecha(){
     const hoy = new Date();
