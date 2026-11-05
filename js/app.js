@@ -739,12 +739,11 @@ function activarFiltrosMesas(){
         );
     });
 }
+
 function actualizarSesiones(data){
-    console.log(Object.keys(data));
     const hoja =
         data["Cadencia"];
-    console.log("CADENCIA");
-    console.table(hoja.slice(12,20));
+
     if(!hoja){
         return;
     }
@@ -752,23 +751,10 @@ function actualizarSesiones(data){
         document.getElementById(
             "sesiones-listado"
         );
-    
     if(!listado){
         return;
     }
-    
     listado.innerHTML = "";
-
-    if(
-        !cumplimiento ||
-        !comercial ||
-        !tecnologia
-    ){
-        return;
-    }
-    cumplimiento.innerHTML = "";
-    comercial.innerHTML = "";
-    tecnologia.innerHTML = "";
     let totalCumplimiento = 0;
     let totalComercial = 0;
     let totalTecnologia = 0;
@@ -778,13 +764,35 @@ function actualizarSesiones(data){
         const mesa = fila[3];
         const grabacion = fila[4];
         const minuta = fila[5];
-        const html = `
+        let icono = "📄";
+        if(
+            String(mesa)
+                .includes("Cumplimiento")
+        ){
+            totalCumplimiento++;
+            icono = "🛡";
+        }
+        else if(
+            String(mesa)
+                .includes("Estrategia")
+        ){
+            totalComercial++;
+            icono = "📊";
+        }
+        else if(
+            String(mesa)
+                .includes("Arquitectura")
+        ){
+            totalTecnologia++;
+            icono = "⚙";
+        }
+        listado.innerHTML += `
             <div class="sesion-item">
                 <div class="sesion-fecha">
                     ${fecha}
                 </div>
                 <div class="sesion-titulo">
-                    ${tipo}
+                    ${icono} ${tipo}
                 </div>
                 <a class="sesion-link"
                    href="${grabacion}"
@@ -798,27 +806,6 @@ function actualizarSesiones(data){
                 </a>
             </div>
         `;
-        if(
-            String(mesa)
-                .includes("Cumplimiento")
-        ){
-            cumplimiento.innerHTML += html;
-            totalCumplimiento++;
-        }
-        else if(
-            String(mesa)
-                .includes("Estrategia")
-        ){
-            comercial.innerHTML += html;
-            totalComercial++;
-        }
-        else if(
-            String(mesa)
-                .includes("Arquitectura")
-        ){
-            tecnologia.innerHTML += html;
-            totalTecnologia++;
-        }
     });
     document.getElementById(
         "resumen-cumplimiento"
