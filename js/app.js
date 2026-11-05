@@ -770,7 +770,7 @@ function actualizarSesiones(data){
     let totalCumplimiento = 0;
     let totalComercial = 0;
     let totalTecnologia = 0;
-    hoja.slice(2).forEach(fila => {
+    hoja.slice(13).forEach(fila => {
         const tipo = fila[1];
         const fecha = fila[2];
         const mesa = fila[3];
