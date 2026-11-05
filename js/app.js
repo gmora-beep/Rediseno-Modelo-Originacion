@@ -748,18 +748,17 @@ function actualizarSesiones(data){
     if(!hoja){
         return;
     }
-    const cumplimiento =
-        document.querySelector(
-            "#sesiones-cumplimiento .sesion-lista"
+    const listado =
+        document.getElementById(
+            "sesiones-listado"
         );
-    const comercial =
-        document.querySelector(
-            "#sesiones-comercial .sesion-lista"
-        );
-    const tecnologia =
-        document.querySelector(
-            "#sesiones-tecnologia .sesion-lista"
-        );
+    
+    if(!listado){
+        return;
+    }
+    
+    listado.innerHTML = "";
+
     if(
         !cumplimiento ||
         !comercial ||
