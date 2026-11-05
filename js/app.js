@@ -216,8 +216,20 @@ async function cargarVista(ruta){
     const html = await response.text();
     document.getElementById("contenido-decisiones").innerHTML = html;
 }
+async function cargarVistaSemanal(){
+    const response =
+        await fetch(
+            "views/semanal.html"
+        );
+    const html =
+        await response.text();
+    document.getElementById(
+        "contenido-semanal"
+    ).innerHTML = html;
+}
 
 let decisionesCargadas = false;
+let semanalCargado = false;
 let mesaSeleccionada = "todas";
 let responsableSeleccionado = "todos";
 document.addEventListener("DOMContentLoaded", () => {
@@ -229,6 +241,14 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("panel-tablero");
     const panelDecisiones =
         document.getElementById("panel-actividades");
+    const tabSemanal =
+        document.getElementById(
+            "tab-semanal"
+        );    
+    const panelSemanal =
+        document.getElementById(
+            "panel-semanal"
+        );
     tabDecisiones.addEventListener("click", async () => {
         panelTablero.hidden = true;
         panelDecisiones.hidden = false;
@@ -236,6 +256,30 @@ document.addEventListener("DOMContentLoaded", () => {
             "aria-selected",
             "false"
         );
+    tabSemanal.addEventListener(
+        "click",
+        async () => {
+            panelTablero.hidden = true;
+            panelDecisiones.hidden = true;
+            panelSemanal.hidden = false;
+            tabTablero.setAttribute(
+                "aria-selected",
+                "false"
+            );
+            tabDecisiones.setAttribute(
+                "aria-selected",
+                "false"
+            );
+            tabSemanal.setAttribute(
+                "aria-selected",
+                "true"
+            );
+            if(!semanalCargado){
+                await cargarVistaSemanal();
+                semanalCargado = true;
+            }
+        }
+    );
         tabDecisiones.setAttribute(
             "aria-selected",
             "true"
@@ -254,7 +298,26 @@ document.addEventListener("DOMContentLoaded", () => {
             decisionesCargadas = true;
         }
     });
-    tabTablero.addEventListener("click", () => {
+    tabTablero.addEventListener(
+        "click",
+        () => {    
+            panelTablero.hidden = false;
+            panelDecisiones.hidden = true;
+            panelSemanal.hidden = true;    
+            tabTablero.setAttribute(
+                "aria-selected",
+                "true"
+            );    
+            tabDecisiones.setAttribute(
+                "aria-selected",
+                "false"
+            );    
+            tabSemanal.setAttribute(
+                "aria-selected",
+                "false"
+            );    
+        }
+    );
         panelTablero.hidden = false;
         panelDecisiones.hidden = true;
         tabTablero.setAttribute(
