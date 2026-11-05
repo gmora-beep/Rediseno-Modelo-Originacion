@@ -1353,9 +1353,9 @@ a { color: inherit; text-decoration: none; }
 /* ===== ROADMAP MVP ===== */
 
 .roadmap-card{
-    max-width: 1250px;
-    margin: 20px auto 0;
-    padding: 0;
+    width:95%;
+    margin:20px 0 0;
+    padding:0;
 }
 
 .roadmap-title{
