@@ -1646,3 +1646,6 @@ a { color: inherit; text-decoration: none; }
 .foco-meta strong{
     color:#1b355d;
 }
+#filtro-responsables{
+    margin-top:-6px;
+}
