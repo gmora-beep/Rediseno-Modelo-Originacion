@@ -911,6 +911,15 @@ function actualizarPlanTrabajo(data){
         const etapa = fila[2];
         const objetivo = fila[3];
         const hito = fila[4];
+        const lineas =
+            String(hito || "")
+                .split("\n");
+        
+        const tituloHito =
+            lineas[0] || "";
+        
+        const detalleHito =
+            lineas.slice(1);
         const estatus = fila[5];
         let clase = "programado";
         if(
@@ -941,17 +950,23 @@ function actualizarPlanTrabajo(data){
                 <td>
                     ${objetivo}
                 </td>
-                <td>
+                <td>    
+                    <div class="hito-principal">
+                        ${tituloHito}
+                    </div>                
+                    <ul class="hito-detalle">                
+                        ${detalleHito.map(item => `
+                            <li>${item.replace(/^- /,'')}</li>
+                        `).join("")}                
+                    </ul>                
+                </td>
+            </tr>
                     <span
                         class="plan-status ${clase}">
                         ${estatus}
                     </span>
                 </td>
-                <td>
-                    ${hito}
-                </td>
-            </tr>
-
+                <td>          
         `;
     });
 }
