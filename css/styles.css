@@ -1956,19 +1956,45 @@ a { color: inherit; text-decoration: none; }
 }
 .roadmap-item{
     position:absolute;
-    top:-35px;
+    top:74px;
+    width:0;
+}
+
+.roadmap-label{
+    position:absolute;
+    left:0;
     transform:translateX(-50%);
-    width:150px;
+    width:160px;
     text-align:center;
+    font-size:13px;
+    line-height:1.3;
+    color:#44546E;
+}
+
+.roadmap-label strong{
+    display:block;
+    font-size:14px;
+    color:#1b355d;
+    font-weight:700;
+    margin-bottom:4px;
 }
 
 .roadmap-date{
     margin-bottom:6px;
 }
+.roadmap-item.tier-a .roadmap-label{
+    bottom:22px;
+}
+.roadmap-item.tier-b .roadmap-label{
+    bottom:70px;
+}
 
-.roadmap-stem{
-    width:2px;
-    height:52px;
+.roadmap-item.tier-b::before{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:14px;
+    width:1px;
+    height:42px;
     background:#7baae0;
-    margin:0 auto;
 }
