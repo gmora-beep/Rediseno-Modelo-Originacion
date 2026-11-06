@@ -2055,7 +2055,7 @@ a { color: inherit; text-decoration: none; }
     vertical-align:top;
 }
 .plan-status{
-    display:inline-flex;
+    display:flex;
     align-items:center;
     justify-content:center;
     white-space:nowrap;
@@ -2115,16 +2115,40 @@ a { color: inherit; text-decoration: none; }
 }
 .plan-table th:nth-child(2),
 .plan-table td:nth-child(2){
-    width:90px;
+    width:80px;
     text-align:center;
 }
 .plan-table th:nth-child(3),
 .plan-table td:nth-child(3){
-    width:140px;
+    width:120px;
 }
 .plan-table th:nth-child(6),
 .plan-table td:nth-child(6){
-    width:120px;
+    width:110px;
     white-space:nowrap;
     text-align:center;
+}
+.plan-status.completado{
+    background:#E2F0DF;
+    color:#2C6526;
+}
+
+.plan-status.proceso{
+    background:#DCEAF9;
+    color:#1D4F8C;
+}
+
+.plan-status.revision{
+    background:#FFF4DA;
+    color:#8A5A00;
+}
+
+.plan-status.pendiente{
+    background:#FBE1DA;
+    color:#962711;
+}
+
+.plan-status.programado{
+    background:#EEF1F5;
+    color:#4F5E73;
 }
