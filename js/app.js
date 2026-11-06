@@ -1,7 +1,7 @@
 async function cargarDashboard(data){
     window.dashboardData = data;
     actualizarFecha();
-    actualizarHero(data);
+    actualizarDiasRestantes();
     actualizarMesas(data);
     actualizarResumenMVP(data);
     actualizarResumenDecisiones(data);
@@ -866,4 +866,27 @@ function actualizarSesiones(data){
         "resumen-tecnologia"
     ).textContent = totalTecnologia;
 
+}
+
+function actualizarDiasRestantes(){
+    const fin =
+        new Date("2027-01-25");
+    const hoy =
+        new Date();
+    const dias =
+        Math.max(
+            0,
+            Math.ceil(
+                (fin - hoy) /
+                (1000 * 60 * 60 * 24)
+            )
+        );
+    const contador =
+        document.getElementById(
+            "dias-restantes"
+        );
+    if(contador){
+        contador.textContent =
+            dias;
+    }
 }
