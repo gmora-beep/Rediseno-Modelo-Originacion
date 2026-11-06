@@ -1898,7 +1898,7 @@ a { color: inherit; text-decoration: none; }
 .hero-main-title{
     font-size:42px;
     line-height:1.05;
-    width:100%;
+    white-space:nowrap;
     margin-bottom:18px;
 }
 
@@ -2027,10 +2027,11 @@ a { color: inherit; text-decoration: none; }
 }
 .hero-principal{
     display:grid !important;
-    grid-template-columns:minmax(0,1fr) 220px;
+    grid-template-columns:
+        minmax(900px,1fr)
+        220px;
     align-items:start;
-    gap:40px;
-
+    gap:24px;
 }
 
 .plan-wrap{
@@ -2108,4 +2109,8 @@ a { color: inherit; text-decoration: none; }
 .plan-table td:first-child,
 .plan-table td:nth-child(2){
     text-align:center;
+}
+.hero-main{
+    width:100%;
+    min-width:0;
 }
