@@ -1421,11 +1421,15 @@ a { color: inherit; text-decoration: none; }
 }
 
 .roadmap-diamond{
+    position:absolute;
+    left:0;
+    top:0;
     width:22px;
     height:22px;
     background:#e75301;
-    transform:translateY(-13px) rotate(45deg);
-    margin:0 auto;
+    transform:
+        translate(-50%,-50%)
+        rotate(45deg);
 }
 
 .roadmap-label{
@@ -1963,7 +1967,10 @@ a { color: inherit; text-decoration: none; }
 
 }
 .roadmap-item{
+    position:absolute;
     top:76px;
+    width:0;
+    height:0;
 }
 
 .roadmap-label{
@@ -1989,20 +1996,20 @@ a { color: inherit; text-decoration: none; }
     margin-bottom:6px;
 }
 .roadmap-item.tier-a .roadmap-label{
-    bottom:1.5rem;
+    top:-70px;
 }
 
 .roadmap-item.tier-b .roadmap-label{
-    bottom:5rem;
+    top:-125px;
 }
 
 .roadmap-item.tier-b::before{
     content:"";
     position:absolute;
     left:0;
-    bottom:.6rem;
+    top:-72px;
     width:1px;
-    height:4.5rem;
+    height:60px;
     background:#7baae0;
 }
 .hito-fresh .roadmap-label{
