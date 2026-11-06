@@ -1385,13 +1385,6 @@ a { color: inherit; text-decoration: none; }
     background:#1b355d;
 }
 
-.roadmap-item{
-    position:absolute;
-    top:-10px;
-    transform:translateX(-50%);
-    text-align:center;
-    width:150px;
-}
 .hito-fresh{
     width:80px;
 }
@@ -1399,19 +1392,17 @@ a { color: inherit; text-decoration: none; }
 .hito-mesas{
     width:80px;
 }
-.roadmap-date{
-    font-weight:700;
-    color:#1b355d;
-    margin-bottom:10px;
-}
 
 .roadmap-dot{
-    width:18px;
-    height:18px;
+    position:absolute;
+    left:0;
+    top:0;
+    width:14px;
+    height:14px;
+    transform:translate(-50%,-50%);
     border-radius:50%;
-    margin:0 auto;
-    position:relative;
-    top:-11px;
+    background:#fff;
+    border:3px solid #1b355d;
 }
 
 .done .roadmap-dot{
@@ -1438,10 +1429,27 @@ a { color: inherit; text-decoration: none; }
 }
 
 .roadmap-label{
-    margin-bottom:8px;
-    color:#1b355d;
-    font-size:14px;
+    position:absolute;
+    left:0;
+    transform:translateX(-50%);
+    width:150px;
+    text-align:center;
+    font-size:.8125rem;
     line-height:1.3;
+    color:#44546e;
+}
+
+.roadmap-label strong{
+
+    display:block;
+
+    color:#1b355d;
+
+    font-size:.875rem;
+
+    font-weight:700;
+
+    margin-bottom:4px;
 }
 
 .roadmap-phase{
@@ -1983,18 +1991,20 @@ a { color: inherit; text-decoration: none; }
     margin-bottom:6px;
 }
 .roadmap-item.tier-a .roadmap-label{
-    bottom:22px;
+    bottom:1rem;
 }
+
 .roadmap-item.tier-b .roadmap-label{
-    bottom:70px;
+    bottom:3.75rem;
 }
 
 .roadmap-item.tier-b::before{
     content:"";
     position:absolute;
     left:0;
-    bottom:14px;
+    bottom:.6rem;
     width:1px;
-    height:42px;
+    height:3rem;
     background:#7baae0;
 }
+
