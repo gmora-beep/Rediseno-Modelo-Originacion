@@ -325,6 +325,10 @@ document.addEventListener("DOMContentLoaded", () => {
             if(!semanalCargado){
     
                 await cargarVistaSemanal();
+
+                actualizarHero(
+                    window.dashboardData
+                );
     
                 actualizarSesiones(
                     window.dashboardData
