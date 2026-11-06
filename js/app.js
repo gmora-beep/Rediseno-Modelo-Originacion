@@ -939,6 +939,9 @@ function actualizarPlanTrabajo(data){
                     ${etapa}
                 </td>
                 <td>
+                    ${objetivo}
+                </td>
+                <td>
                     <span
                         class="plan-status ${clase}">
                         ${estatus}
@@ -948,14 +951,7 @@ function actualizarPlanTrabajo(data){
                     ${hito}
                 </td>
             </tr>
-            <tr class="plan-objetivo">
-                <td colspan="5">
-                    <strong>
-                        Objetivo:
-                    </strong>
-                    ${objetivo}
-                </td>
-            </tr>
+
         `;
     });
 }
