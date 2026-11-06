@@ -326,6 +326,10 @@ document.addEventListener("DOMContentLoaded", () => {
     
                 await cargarVistaSemanal();
 
+                actualizarPlanTrabajo(
+                    window.dashboardData
+                );
+
                 actualizarHero(
                     window.dashboardData
                 );
@@ -889,4 +893,69 @@ function actualizarDiasRestantes(){
         contador.textContent =
             dias;
     }
+}
+function actualizarPlanTrabajo(data){
+    const hoja =
+        data["Plan de trabajo"];
+    const cuerpo =
+        document.getElementById(
+            "plan-trabajo-body"
+        );
+    if(!hoja || !cuerpo){
+        return;
+    }
+    cuerpo.innerHTML = "";
+    hoja.slice(1).forEach(fila => {
+        const ciclo = fila[0];
+        const semanas = fila[1];
+        const etapa = fila[2];
+        const objetivo = fila[3];
+        const hito = fila[4];
+        const estatus = fila[5];
+        let clase = "programado";
+        if(
+            String(estatus)
+                .toLowerCase()
+                .includes("complet")
+        ){
+            clase = "completado";
+        }
+        else if(
+            String(estatus)
+                .toLowerCase()
+                .includes("curso")
+        ){
+            clase = "curso";
+        }
+        cuerpo.innerHTML += `
+            <tr>
+                <td>
+                    ${ciclo}
+                </td>
+                <td>
+                    ${semanas}
+                </td>
+                <td>
+                    ${etapa}
+                </td>
+                <td>
+                    <span
+                        class="plan-status ${clase}">
+                        ${estatus}
+                    </span>
+                </td>
+                <td>
+                    ${hito}
+                </td>
+            </tr>
+            <tr class="plan-objetivo">
+                <td colspan="5">
+                    <strong>
+                        Objetivo:
+                    </strong>
+                    ${objetivo}
+                </td>
+            </tr>
+        `;
+    });
 }
