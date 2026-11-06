@@ -966,7 +966,7 @@ function actualizarPlanTrabajo(data){
                         ${estatus}
                     </span>
                 </td>
-                <td>          
+            </tr>          
         `;
     });
 }
