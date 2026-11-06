@@ -1955,3 +1955,10 @@ a { color: inherit; text-decoration: none; }
     color:#5f6f87;
     text-align:right;
 }
+.programa-overview{
+    background:#dfeaf8;
+    border-radius:22px;
+    padding:30px 40px 20px;
+    margin-top:18px;
+
+}
