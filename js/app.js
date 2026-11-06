@@ -937,36 +937,54 @@ function actualizarPlanTrabajo(data){
             clase = "curso";
         }
         cuerpo.innerHTML += `
+        
             <tr>
+        
                 <td>
                     ${ciclo}
                 </td>
+        
                 <td>
                     ${semanas}
                 </td>
+        
                 <td>
                     ${etapa}
                 </td>
+        
                 <td>
                     ${objetivo}
                 </td>
-                <td>    
+        
+                <td>
+        
                     <div class="hito-principal">
                         ${tituloHito}
-                    </div>                
-                    <ul class="hito-detalle">                
+                    </div>
+        
+                    <ul class="hito-detalle">
+        
                         ${detalleHito.map(item => `
-                            <li>${item.replace(/^- /,'')}</li>
-                        `).join("")}                
-                    </ul>                
+                            <li>
+                                ${item.replace(/^- /,'')}
+                            </li>
+                        `).join("")}
+        
+                    </ul>
+        
                 </td>
-            </tr>
+        
+                <td>
+        
                     <span
                         class="plan-status ${clase}">
                         ${estatus}
                     </span>
+        
                 </td>
-            </tr>          
+        
+            </tr>
+        
         `;
     });
 }
