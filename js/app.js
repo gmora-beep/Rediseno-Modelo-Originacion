@@ -65,6 +65,26 @@ function actualizarDecisiones(data){
         const fecha = fila[4];
         const estatus = fila[5];
         const prioridad = fila[6];
+        const fechaLevantamiento =
+            new Date(fecha);        
+        const hoy =
+            new Date();        
+        const diasTranscurridos =
+            Math.max(
+                0,
+                Math.floor(
+                    (hoy - fechaLevantamiento) /
+                    (1000 * 60 * 60 * 24)
+                )
+            );        
+        let claseDias =
+            "dias-critico";        
+        if(diasTranscurridos <= 2){        
+            claseDias = "dias-ok";        
+        }
+        else if(diasTranscurridos <= 4){        
+            claseDias = "dias-alerta";        
+        }
         if(
             mesaSeleccionada !== "todas" &&
             mesa !== mesaSeleccionada
@@ -105,9 +125,28 @@ function actualizarDecisiones(data){
                         ${estatus}
                     </p>
                 </div>
-                <span class="status">
-                    ${prioridad}
-                </span>
+                <div class="decision-side">
+                    <span class="level ${clasePrioridad}">
+                        ${prioridad}
+                    </span>
+                    ${
+                        String(estatus)
+                            .trim()
+                            .toLowerCase() !== "cerrado"
+                        ?        `
+                        <div class="dias-box">
+                            <strong class="${claseDias}">
+                                ${diasTranscurridos}
+                            </strong>
+                            <span>
+                                días transcurridos
+                            </span>
+                        </div>
+                        `
+                        :
+                        ""
+                    }
+                </div>
             </li>
         `;
         if(
