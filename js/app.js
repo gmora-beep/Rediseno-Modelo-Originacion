@@ -41,13 +41,21 @@ function actualizarDecisiones(data){
         return;
     }
     const pendientes =
-        document.getElementById("lista-pendientes");
+        document.getElementById(
+            "lista-pendientes"
+        );
     const realizadas =
-        document.getElementById("lista-realizadas");
+        document.getElementById(
+            "lista-realizadas"
+        );
     const totalPendientes =
-        document.getElementById("dec-pendientes");
+        document.getElementById(
+            "dec-pendientes"
+        );
     const totalRealizadas =
-        document.getElementById("dec-realizadas");
+        document.getElementById(
+            "dec-realizadas"
+        );
     if(
         !pendientes ||
         !realizadas
@@ -64,11 +72,15 @@ function actualizarDecisiones(data){
         const mesa = fila[3];
         const fecha = fila[4];
         const estatus = fila[5];
-        const prioridad = fila[6];
+        const prioridadOriginal = fila[6];
+        const prioridad =
+            String(prioridadOriginal || "")
+                .trim()
+                .toLowerCase();
         const fechaLevantamiento =
-            new Date(fecha);        
+            new Date(fecha);
         const hoy =
-            new Date();        
+            new Date();
         const diasTranscurridos =
             Math.max(
                 0,
@@ -76,14 +88,26 @@ function actualizarDecisiones(data){
                     (hoy - fechaLevantamiento) /
                     (1000 * 60 * 60 * 24)
                 )
-            );        
+            );
         let claseDias =
-            "dias-critico";        
-        if(diasTranscurridos <= 2){        
-            claseDias = "dias-ok";        
+            "dias-critico";
+        if(diasTranscurridos <= 2){
+            claseDias =
+                "dias-ok";
         }
-        else if(diasTranscurridos <= 4){        
-            claseDias = "dias-alerta";        
+        else if(diasTranscurridos <= 4){
+            claseDias =
+                "dias-alerta";
+        }
+        let clasePrioridad =
+            "level--bajo";
+        if(prioridad === "alta"){
+            clasePrioridad =
+                "level--alto";
+        }
+        else if(prioridad === "media"){
+            clasePrioridad =
+                "level--medio";
         }
         if(
             mesaSeleccionada !== "todas" &&
@@ -91,23 +115,16 @@ function actualizarDecisiones(data){
         ){
             return;
         }
-        
         if(
             responsableSeleccionado !== "todos" &&
             responsable !== responsableSeleccionado
         ){
             return;
         }
-        let clasePrioridad =
-            "level--bajo";        
-        if(prioridad === "alta"){        
-            clasePrioridad =
-                "level--alto";        
-        }
-        else if(prioridad === "media"){        
-            clasePrioridad =
-                "level--medio";        
-        }
+        const esCerrado =
+            String(estatus)
+                .trim()
+                .toLowerCase() === "cerrado";
         const tarjeta = `
             <li class="act">
                 <div class="act__date">
@@ -133,17 +150,17 @@ function actualizarDecisiones(data){
                     <p class="act__src">
                         Estatus:
                         ${estatus}
+
                     </p>
                 </div>
                 <div class="decision-side">
                     <span class="level ${clasePrioridad}">
-                        ${prioridad}
+                        ${prioridadOriginal}
                     </span>
                     ${
-                        String(estatus)
-                            .trim()
-                            .toLowerCase() !== "cerrado"
-                        ?        `
+                        !esCerrado
+                        ?
+                        `
                         <div class="dias-box">
                             <strong class="${claseDias}">
                                 ${diasTranscurridos}
@@ -151,22 +168,18 @@ function actualizarDecisiones(data){
                             <span>
                                 días transcurridos
                             </span>
-                        </div>
-                        `
+                        </div>                        `
                         :
                         ""
                     }
                 </div>
             </li>
         `;
-        if(
-            String(estatus)
-                .trim()
-                .toLowerCase() === "cerrado"
-        ){
+        if(esCerrado){
             realizadas.innerHTML += tarjeta;
             contadorRealizadas++;
-        }else{
+        }
+        else{
             pendientes.innerHTML += tarjeta;
             contadorPendientes++;
         }
@@ -178,6 +191,7 @@ function actualizarDecisiones(data){
     if(totalRealizadas){
         totalRealizadas.textContent =
             contadorRealizadas;
+
     }
 }
 function obtenerDia(fecha){
