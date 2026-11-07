@@ -408,6 +408,25 @@ function actualizarResumenDecisiones(data){
             String(fila[6] || "")
                 .trim()
                 .toLowerCase();
+        const fechaLevantamiento =
+            new Date(fila[4]);        
+        const hoy =
+            new Date();       
+        const diasTranscurridos =
+            Math.max(
+                0,
+                Math.floor(
+                    (hoy - fechaLevantamiento) /
+                    (1000 * 60 * 60 * 24)
+                )
+            );        
+        let claseDias = "dias-critico";        
+        if(diasTranscurridos <= 2){        
+            claseDias = "dias-ok";        
+        }
+        else if(diasTranscurridos <= 4){        
+            claseDias = "dias-alerta";        
+        }
         let clasePrioridad =
             "level--bajo";
         if(prioridad === "alta"){
@@ -424,9 +443,19 @@ function actualizarResumenDecisiones(data){
                     <p class="decision__title">
                         ${fila[1]}
                     </p>
-                    <span class="level ${clasePrioridad}">
-                        ${fila[6]}
-                    </span>
+                    <div class="decision-side">                    
+                        <span class="level ${clasePrioridad}">
+                            ${fila[6]}
+                        </span>                    
+                        <div class="dias-box">                    
+                            <strong class="${claseDias}">
+                                ${diasTranscurridos}
+                            </strong>                    
+                            <span>
+                                días transcurridos
+                            </span>                    
+                        </div>                    
+                    </div>
                 </div>
                 <div class="decision__meta">
                     <strong>Mesa:</strong>
