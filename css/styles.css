@@ -2152,3 +2152,41 @@ a { color: inherit; text-decoration: none; }
     background:#EEF1F5;
     color:#4F5E73;
 }
+.decision-side{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    min-width:90px;
+}
+
+.dias-box{
+    text-align:center;
+}
+
+.dias-box strong{
+    display:block;
+    font-size:28px;
+    font-weight:700;
+    line-height:1;
+}
+
+.dias-box span{
+    display:block;
+    margin-top:4px;
+    font-size:11px;
+    color:#5f6f87;
+    line-height:1.2;
+}
+
+.dias-ok{
+    color:#2C6526;
+}
+
+.dias-alerta{
+    color:#C56A00;
+}
+
+.dias-critico{
+    color:#C0392B;
+}
