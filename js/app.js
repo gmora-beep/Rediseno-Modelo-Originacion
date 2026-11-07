@@ -37,6 +37,7 @@ function actualizarHero(data){
 function actualizarDecisiones(data){
     const hoja =
         data["Definiciones pendientes"];
+
     if(!hoja){
         return;
     }
@@ -60,13 +61,52 @@ function actualizarDecisiones(data){
         !pendientes ||
         !realizadas
     ){
-        return;
-    }
+        return;    }
+
     pendientes.innerHTML = "";
     realizadas.innerHTML = "";
     let contadorPendientes = 0;
     let contadorRealizadas = 0;
-    hoja.slice(1).forEach(fila => {
+    const registros = hoja
+        .slice(1)
+        .sort((a,b) => {
+            const prioridadA =
+                String(a[6] || "")
+                    .trim()
+                    .toLowerCase();
+            const prioridadB =
+                String(b[6] || "")
+                    .trim()
+                    .toLowerCase();
+            const ordenPrioridad = {
+                "alta": 1,
+                "media": 2,
+                "baja": 3
+            };
+            const valorA =
+                ordenPrioridad[prioridadA] || 99;
+            const valorB =
+                ordenPrioridad[prioridadB] || 99;
+            if(valorA !== valorB){
+                return valorA - valorB;
+            }
+            const fechaA =
+                new Date(a[4]);
+            const fechaB =
+                new Date(b[4]);
+            const diasA =
+                Math.floor(
+                    (new Date() - fechaA) /
+                    (1000 * 60 * 60 * 24)
+                );
+            const diasB =
+                Math.floor(
+                    (new Date() - fechaB) /
+                    (1000 * 60 * 60 * 24)
+                );
+            return diasB - diasA;
+        });
+    registros.forEach(fila => {
         const texto = fila[1];
         const responsable = fila[2];
         const mesa = fila[3];
@@ -150,7 +190,6 @@ function actualizarDecisiones(data){
                     <p class="act__src">
                         Estatus:
                         ${estatus}
-
                     </p>
                 </div>
                 <div class="decision-side">
@@ -162,13 +201,15 @@ function actualizarDecisiones(data){
                         ?
                         `
                         <div class="dias-box">
+
                             <strong class="${claseDias}">
                                 ${diasTranscurridos}
                             </strong>
                             <span>
                                 días transcurridos
                             </span>
-                        </div>                        `
+                        </div>
+                        `
                         :
                         ""
                     }
@@ -191,7 +232,6 @@ function actualizarDecisiones(data){
     if(totalRealizadas){
         totalRealizadas.textContent =
             contadorRealizadas;
-
     }
 }
 function obtenerDia(fecha){
