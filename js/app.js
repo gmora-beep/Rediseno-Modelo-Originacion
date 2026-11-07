@@ -98,6 +98,16 @@ function actualizarDecisiones(data){
         ){
             return;
         }
+        let clasePrioridad =
+            "level--bajo";        
+        if(prioridad === "alta"){        
+            clasePrioridad =
+                "level--alto";        
+        }
+        else if(prioridad === "media"){        
+            clasePrioridad =
+                "level--medio";        
+        }
         const tarjeta = `
             <li class="act">
                 <div class="act__date">
