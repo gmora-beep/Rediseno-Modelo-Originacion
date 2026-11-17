@@ -701,7 +701,7 @@ function actualizarRoadmap(){
     const inicio =
         new Date("2026-10-01");
     const fin =
-        new Date("2027-01-25");
+        new Date("2027-02-08");
     const hoy =
         new Date();
     const totalDias =
