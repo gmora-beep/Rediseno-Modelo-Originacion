@@ -723,7 +723,7 @@ function actualizarRoadmap(){
         [".hito-camino","2026-11-03"],
         [".hito-sombra","2026-11-30"],
         [".hito-operacion","2026-12-28"],
-        [".hito-fin","2027-01-25"]
+        [".hito-fin","2027-02-08"]
 
     ];
     hitos.forEach(h => {
