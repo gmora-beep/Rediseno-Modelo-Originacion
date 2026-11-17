@@ -1006,7 +1006,7 @@ function actualizarSesiones(data){
 
 function actualizarDiasRestantes(){
     const fin =
-        new Date("2027-01-25");
+        new Date("2027-02-08");
     const hoy =
         new Date();
     const dias =
